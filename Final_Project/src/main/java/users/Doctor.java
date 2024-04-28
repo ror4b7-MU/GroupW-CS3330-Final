@@ -15,7 +15,7 @@ public class Doctor
 {
     private String firstName; 
     private String lastName; 
-    private Appointment schedule[]; //Holds all appointments for the current docotr 
+    private ArrayList<Appointment> schedule; //Holds all appointments for the current docotr 
     private String birthDate; 
     private int ID; //THis is so there is a way for someone to delate a docotr
     private Specialization doctorSpecialization; 
@@ -39,9 +39,7 @@ public class Doctor
         this.doctorSpecialization = doctorSpecialization; 
         idCounter += 1;  
 
-        this.schedule = new
-
-        allDoctors.add(this);  
+        this.schedule = new ArrayList<Appointment>(); 
     }
 
 

@@ -14,9 +14,12 @@ public class Main
         Doctor doc2 = new Doctor("Ally", "Tuck", "11/10", Specialization.ONCOLOGIST); 
 
         PatientUser pat1 = new PatientUser("Layla", "Apricote", "11/24"); 
+        PatientUser pat2 = new PatientUser("Bob", "Evans", "11/24"); 
 
         
-        System.out.println(doc.scheduleAppointment(pat1, new Date(), new Date()));
+
+
+       
 
     }
 }
