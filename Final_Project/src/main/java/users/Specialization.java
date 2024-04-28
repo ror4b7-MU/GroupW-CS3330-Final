@@ -30,7 +30,5 @@ public enum Specialization {
     public void addReferral(PatientUser patient) {
         referrals.add(patient);
     }
-
    
-
 }

@@ -3,6 +3,9 @@ package users;
 import java.util.Date;
 import java.util.List;
 
+import javax.print.Doc;
+import javax.swing.plaf.nimbus.State;
+
 import records.Appointment;
 
 
@@ -13,34 +16,42 @@ public class Doctor
     private String firstName; 
     private String lastName; 
     private Appointment schedule[]; //Holds all appointments for the current docotr 
-    private Date birthDate; 
+    private String birthDate; 
     private int ID; //THis is so there is a way for someone to delate a docotr
     private Specialization doctorSpecialization; 
 
 
-    //These belong to all docotrs 
+    //These belong to all docotrs
+    //This  allows any doctor withen a deparmtnet to accese all patients that were refered to their department 
     private static List<Doctor> allDoctors = new ArrayList<>();
     private static List<PatientUser> referedList = new ArrayList<>();
     private static int idCounter = 10000;
 
 
 
-    //This docotr creates a docotr account, which is then kept in the static docotr array
-    public void makeDoctorAccount(String firstName, String lastName, Date birthDate, Specialization doctorSpecialization)
+    //This creates a doctor account, which is then stored in the allDoctors array
+    public Doctor(String firstName, String lastName, String date, Specialization doctorSpecialization)
     {
         this.firstName = firstName; 
         this.lastName = lastName;
-        this.birthDate = birthDate;
+        this.birthDate = date;
         this.ID = idCounter;
         this.doctorSpecialization = doctorSpecialization; 
         idCounter += 1;  
+
+        this.schedule = new
 
         allDoctors.add(this);  
     }
 
 
-    //This method attempts to sucudle an appointmet.
-    //If it fails it returns false, and if it sucudes it returns true 
+    public String toString()
+    {
+        return(ID + "\n" + firstName + " "+ lastName + "\n" + doctorSpecialization + "\n");
+    }
+
+    //This method attempts to set up an appointmet.
+    //If it fails it returns false, and else it returns true
     public Boolean scheduleAppointment(PatientUser patient, Date start , Date end)
     {
         for (Appointment apointment : schedule)
@@ -77,6 +88,12 @@ public class Doctor
                 System.out.println(apointment);
             }
         }
+    }
+
+
+    public static List<Doctor> getAllDoctors()
+    {
+        return allDoctors; 
     }
 
 

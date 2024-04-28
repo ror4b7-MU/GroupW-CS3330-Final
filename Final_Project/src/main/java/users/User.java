@@ -7,7 +7,7 @@ public class User {
     private String surname;
     private String birthdate;
 
-    public User (String name, String surname, String birthdate) {
+    public User(String name, String surname, String birthdate) {
         this.name=name;
         this.surname=surname;
         this.birthdate=birthdate;
