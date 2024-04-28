@@ -1,3 +1,4 @@
+package users;
 import java.util.Date;
 import java.util.List;
 
@@ -12,7 +13,7 @@ public enum Specialization {
     ONCOLOGIST;
 
 
-    private List<Patient> referrals;
+    private List<PatientUser> referrals;
 
 
     //This gives each department a sepecrate array of refered patients
@@ -21,12 +22,12 @@ public enum Specialization {
     }
 
     //This gets the referls for each department
-    public List<Patient> getReferrals() {
+    public List<PatientUser> getReferrals() {
         return referrals;
     }
 
     // This adds a referal 
-    public void addReferral(Patient patient) {
+    public void addReferral(PatientUser patient) {
         referrals.add(patient);
     }
 

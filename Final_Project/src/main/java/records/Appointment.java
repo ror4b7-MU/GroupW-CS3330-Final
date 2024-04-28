@@ -1,13 +1,16 @@
+package records; 
+
 import java.util.Date;
 import java.util.List;
 
 import users.Doctor;
+import users.PatientUser;
 
 import java.util.Calendar;
 
 public class Appointment 
 {
-    private Patient patient; 
+    private PatientUser patient; 
     private Doctor doctor; 
     private String reason; 
     private String conclusion; 
@@ -42,7 +45,7 @@ public class Appointment
 
     }
 
-    protected void createAppointment(Patient patient, Doctor doctor, String reason,  String conclusion, Date start, Date end)
+    public void createAppointment(PatientUser patient, Doctor doctor, String reason,  String conclusion, Date start, Date end)
     {
         this.patient = patient; 
         this.doctor = doctor; 

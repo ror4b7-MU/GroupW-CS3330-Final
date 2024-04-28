@@ -3,12 +3,12 @@ package users;
 import java.util.Date;
 import java.util.List;
 
-import Patient;
-import Specialization;
+import records.Appointment;
+
 
 import java.util.ArrayList;
 
-public class Doctor 
+public class Doctor
 {
     private String firstName; 
     private String lastName; 
@@ -20,7 +20,7 @@ public class Doctor
 
     //These belong to all docotrs 
     private static List<Doctor> allDoctors = new ArrayList<>();
-    private static List<Patient> referedList = new ArrayList<>();
+    private static List<PatientUser> referedList = new ArrayList<>();
     private static int idCounter = 10000;
 
 
@@ -41,7 +41,7 @@ public class Doctor
 
     //This method attempts to sucudle an appointmet.
     //If it fails it returns false, and if it sucudes it returns true 
-    public Boolean scheduleAppointment(Patient patient, Date start , Date end)
+    public Boolean scheduleAppointment(PatientUser patient, Date start , Date end)
     {
         for (Appointment apointment : schedule)
         {
@@ -60,7 +60,7 @@ public class Doctor
 
 
     //This method gets all the refered patients from the docotrs type 
-    public List<Patient> getReferedPatients()
+    public List<PatientUser> getReferedPatients()
     {
         return doctorSpecialization.getReferrals();
     }
