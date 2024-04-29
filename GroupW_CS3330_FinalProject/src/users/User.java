@@ -1,7 +1,8 @@
 package users;
 
-// superclass for patients and doctors, meant to eliminate redundant code
 public class User {
+    // superclass for patients and doctors, meant to eliminate redundant code
+    
     // shared variables that both usertypes share
     private String name;
     private String surname;
@@ -36,5 +37,4 @@ public class User {
     public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
     }
-
 }
