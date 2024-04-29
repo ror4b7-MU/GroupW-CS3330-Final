@@ -13,6 +13,11 @@ public class User {
         this.birthdate=birthdate;
     }
 
+    public String toString()
+    {
+        return(this.name + " " + this.surname + "\n");  
+    }
+
     public String getName() {
         return name;
     }

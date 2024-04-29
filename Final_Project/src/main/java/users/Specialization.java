@@ -13,10 +13,11 @@ public enum Specialization {
     ONCOLOGIST;
 
 
+    
     private List<PatientUser> referrals;
 
 
-    //This gives each department a sepecrate array of refered patients
+    //This gives each department a seperate array of refered patients
     Specialization() {
         this.referrals = new ArrayList<>();
     }

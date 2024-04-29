@@ -45,7 +45,7 @@ public class Appointment
 
     }
 
-    public void createAppointment(PatientUser patient, Doctor doctor, String reason,  String conclusion, Date start, Date end)
+    public Appointment(PatientUser patient, Doctor doctor, String reason,  String conclusion, Date start, Date end)
     {
         this.patient = patient; 
         this.doctor = doctor; 
@@ -53,6 +53,7 @@ public class Appointment
         this.conclusion = conclusion; 
         this.start = start; 
         this.end = end;
+
     }
 
     public boolean isSameDay(Date date) {

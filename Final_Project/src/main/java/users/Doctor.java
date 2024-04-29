@@ -17,15 +17,14 @@ public class Doctor
     private String lastName; 
     private ArrayList<Appointment> schedule; //Holds all appointments for the current docotr 
     private String birthDate; 
-    private int ID; //THis is so there is a way for someone to delate a docotr
-    private Specialization doctorSpecialization; 
+    private int ID; //THis is so there is a way for someone to delate a specific doctor
+    private Specialization doctorSpecialization; //This keeps track of what specilization the doctor falls under 
 
 
     //These belong to all docotrs
     //This  allows any doctor withen a deparmtnet to accese all patients that were refered to their department 
     private static List<Doctor> allDoctors = new ArrayList<>();
-    private static List<PatientUser> referedList = new ArrayList<>();
-    private static int idCounter = 10000;
+    private static int idCounter = 10000; 
 
 
 
@@ -40,6 +39,8 @@ public class Doctor
         idCounter += 1;  
 
         this.schedule = new ArrayList<Appointment>(); 
+
+        allDoctors.add(this); 
     }
 
 
@@ -60,9 +61,9 @@ public class Doctor
             }
         }
 
-        Appointment appointment = new Appointment(); 
+        Appointment appointment = new Appointment(patient, this, lastName, firstName, start, end); 
 
-        appointment.createAppointment(patient, this, lastName, firstName, start, end);
+        schedule.add(appointment);
 
         return true;
     }
@@ -74,6 +75,8 @@ public class Doctor
         return doctorSpecialization.getReferrals();
     }
 
+
+    //This gets the doctors appointments for the current day
     public void viewTodaysSchedule()
     {
 
@@ -88,6 +91,9 @@ public class Doctor
         }
     }
 
+
+    //This gets all of the doctors 
+    //Static Type 
 
     public static List<Doctor> getAllDoctors()
     {
