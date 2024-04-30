@@ -3,4 +3,11 @@
   <groupId>cs3330</groupId>
   <artifactId>Final_Project</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.12</version>
+    <scope>test</scope>
+</dependency>
+
 </project>
