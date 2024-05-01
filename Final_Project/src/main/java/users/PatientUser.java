@@ -12,11 +12,19 @@ public class PatientUser extends User {
     private String birthdate;
     private ArrayList<Prescription> medList;
     private ArrayList<Appointment> pastAppointment;
+    private Doctor GCP;
 
     public PatientUser(String name, String surname, String date) {
         super(name, surname, date);
         this.medList=new ArrayList<Prescription>();
         this.pastAppointment=new ArrayList<Appointment>();
+    }
+
+    public PatientUser(String name, String surname, String date, Doctor GCP) {
+        super(name, surname, date);
+        this.medList=new ArrayList<Prescription>();
+        this.pastAppointment=new ArrayList<Appointment>();
+        this.GCP=GCP;
     }
 
     public String getName() {
@@ -57,5 +65,17 @@ public class PatientUser extends User {
 
     public void setPastAppointment(ArrayList<Appointment> pastAppointment) {
         this.pastAppointment= pastAppointment;
+    }
+
+    public ArrayList<Appointment> getPastAppointment() {
+        return pastAppointment;
+    }
+
+    public Doctor getGCP() {
+        return GCP;
+    }
+
+    public void setGCP(Doctor gCP) {
+        GCP = gCP;
     }
 }
