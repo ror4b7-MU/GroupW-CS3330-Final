@@ -14,14 +14,14 @@ public class PatientUser extends User {
     private ArrayList<Appointment> pastAppointment;
     private Doctor GCP;
 
-    public PatientUser(String name, String surname, String date) {
-        super(name, surname, date);
+    public PatientUser(String name, String surname, String date, String userName) {
+        super(name, surname, date, userName);
         this.medList=new ArrayList<Prescription>();
         this.pastAppointment=new ArrayList<Appointment>();
     }
 
-    public PatientUser(String name, String surname, String date, Doctor GCP) {
-        super(name, surname, date);
+    public PatientUser(String name, String surname, String date, String userName,Doctor GCP) {
+        super(name, surname, date, userName);
         this.medList=new ArrayList<Prescription>();
         this.pastAppointment=new ArrayList<Appointment>();
         this.GCP=GCP;
