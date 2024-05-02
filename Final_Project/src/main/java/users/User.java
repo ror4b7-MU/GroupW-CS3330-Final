@@ -6,16 +6,18 @@ public class User {
     private String name;
     private String surname;
     private String birthdate;
+    private String userName; // unique identifier for any user
 
-    public User(String name, String surname, String birthdate) {
+    public User(String name, String surname, String birthdate, String userName) {
         this.name=name;
         this.surname=surname;
         this.birthdate=birthdate;
+        this.userName = userName;
     }
 
     public String toString()
     {
-        return(this.name + " " + this.surname + "\n");  
+        return(this.name + " " + this.surname + ", Username: " + this.userName + "\n");  
     }
 
     public String getName() {
@@ -41,5 +43,13 @@ public class User {
     public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
     }
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
 }

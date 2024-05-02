@@ -18,9 +18,9 @@ public class Main
         Doctor doc2 = new Doctor("Layla", "Smith", "10/10", Specialization.CARDIOLOGIST);
         
     
-        PatientUser pat1 = new PatientUser("Smith", "Name", "10/10"); 
+        PatientUser pat1 = new PatientUser("Smith", "Name", "10/10", "n.smith"); 
 
-        PatientUser pat2 = new PatientUser("Bob", "Sur", "10/10"); 
+        PatientUser pat2 = new PatientUser("Bob", "Sur", "10/10", "s.bob"); 
 
         Date start = new Date(2024, 3, 2, 3, 10); 
         Date end = new Date(2024, 3, 2, 3, 30); 
@@ -45,10 +45,13 @@ public class Main
         // Main program will start here by using scanner to ask the user if they are a Doctor or Patient
         // Based on their response a new instance of PatientView or DoctorView will be initialized
         // Then the UserView.Login method will be called wich will ask for the users name or ID 
-        // login will set the identifying variable in the Userview class Probably ID if its a doctor and name if its a patient
+        // login will set the identifying variable in the Userview class Probably userName
         // might be a good idea to add ID or UserName to the patient class to uniquely identify.
         // it will also authenticate the user by making sure they exist in the OfficeManager
         // UserView.displayOptions will be called which will print a list of things that the user can do
+        // Might have an enum to represent the different options, or could just number them.
+        // Could have a switch statement here in main or in the UserView to that would call the appropriate function
+        // based on the user response
 
     
 

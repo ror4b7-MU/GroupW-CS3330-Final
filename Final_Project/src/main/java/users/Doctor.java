@@ -11,7 +11,7 @@ import records.Appointment;
 
 import java.util.ArrayList;
 
-public class Doctor
+public class Doctor // extends User // need to change the constructor and could get rid of the firstName and LastName fields and ID
 {
     private String firstName; 
     private String lastName; 
