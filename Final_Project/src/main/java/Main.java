@@ -12,7 +12,7 @@ import users.User;
 
 public class Main 
 {
-    public static void main(String []args)
+	public static void main(String []args)
     {
         Doctor doc = new Doctor("Bob", "Joel", "10/10", Specialization.CARDIOLOGIST); 
         Doctor doc2 = new Doctor("Layla", "Smith", "10/10", Specialization.CARDIOLOGIST);
@@ -43,6 +43,7 @@ public class Main
         System.out.println(doc2.scheduleAppointment(pat2, start2, end2));
 
         
+
     
 
     }
