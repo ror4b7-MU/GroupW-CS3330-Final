@@ -42,7 +42,13 @@ public class Main
         //Should return True
         System.out.println(doc2.scheduleAppointment(pat2, start2, end2));
 
-        
+        // Main program will start here by using scanner to ask the user if they are a Doctor or Patient
+        // Based on their response a new instance of PatientView or DoctorView will be initialized
+        // Then the UserView.Login method will be called wich will ask for the users name or ID 
+        // login will set the identifying variable in the Userview class Probably ID if its a doctor and name if its a patient
+        // might be a good idea to add ID or UserName to the patient class to uniquely identify.
+        // it will also authenticate the user by making sure they exist in the OfficeManager
+        // UserView.displayOptions will be called which will print a list of things that the user can do
 
     
 
