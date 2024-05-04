@@ -32,10 +32,17 @@ public class Main
         Date start2 = new Date(2024, 3, 2, 3, 15); 
         Date end2 = new Date(2024, 3, 2, 3, 40); 
 
+/****Rachel method tests****/
+        //Should cycle through the cardiologists, and print the first two
+        System.outprintln(toString(officeManager.returnSpecializedDoc(CARDIOLOGIST)));
+        System.outprintln(toString(officeManager.returnSpecializedDo(CARDIOLOGIST)));
+        
+        //Should fail/show error message due to pediatrist not being a valid doc type
+        System.out.println(toString(officeManager.returnSpecializedDoc(PEDIATRIST)));
 
-        System.outprintln(toString(officeManager.returnCardiologist()));
-        System.outprintln(toString(officeManager.returnCardiologist()));
-
+/**** ******************* ****/
+        
+        
         //Return True
 /*        System.out.println(doc.scheduleAppointment(pat1, start, end));
 
