@@ -14,6 +14,7 @@ public class Appointment
     private Doctor doctor; 
     private String reason; 
     private String conclusion; 
+    private int AppointmentNumber;
     public Date start; 
     public Date end; 
 
@@ -45,12 +46,13 @@ public class Appointment
 
     }
 
-    public Appointment(PatientUser patient, Doctor doctor, String reason,  String conclusion, Date start, Date end)
+    public Appointment(PatientUser patient, Doctor doctor, String reason,  String conclusion, int AppointmentNumber, Date start, Date end)
     {
         this.patient = patient; 
         this.doctor = doctor; 
         this.reason = reason; 
         this.conclusion = conclusion; 
+        this.AppointmentNumber = AppointmentNumber;
         this.start = start; 
         this.end = end;
 

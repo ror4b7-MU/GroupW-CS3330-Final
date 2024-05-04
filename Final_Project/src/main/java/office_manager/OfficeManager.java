@@ -28,7 +28,20 @@ public class OfficeManager {
         doctors = new ArrayList<>();
     }
 
-    // Public static method to access the instance
+    // some getters, don't think we need setters
+    public ArrayList<Appointment> getAppointments() {
+		return appointments;
+	}
+
+	public ArrayList<PatientUser> getPatients() {
+		return patients;
+	}
+
+	public ArrayList<Doctor> getDoctors() {
+		return doctors;
+	}
+
+	// Public static method to access the instance
     public static OfficeManager getInstance() {
         if (instance == null) {
             // If instance is null, initialize it
@@ -39,37 +52,33 @@ public class OfficeManager {
     
     // simple functions to search the patient and doctor arrayLists by userName
     // returns null if user not found or invalid params
-    public PatientUser getPatientByUserName(String userName) {
+    public User getUserByUserName(String userName) {
     	if(userName == null) {
     		return null;
     	}
     	else {
-    		for(PatientUser patient : this.patients) {
-    			if(patient.getUserName() == userName) {
-    				return patient;
+    		for(User user : this.patients) {
+    			if(user.getUserName() == userName) {
+    				return user;
+    			}
+    		}
+    		for(User user : this.doctors) {
+    			if(user.getUserName() == userName) {
+    				return user;
     			}
     		}
   
     	}
     	return null;
     }
-    // would be another one for doctors but doctor isn't a subclass of user yet
     
-    // instead of having different functions for searching the doctors and patients
-    // could have just one :}
-//    public User getUserByUserName(String userName) {
-//    	if(userName == null) {
-//    		return null;
-//    	}
-//    	else {
-//    		for(User user : this.users) {
-//    			if(user.getUserName() == userName) {
-//    				return user;
-//    			}
-//    		}
-//    	}
-//    	return null;
-//    }
+    // someone needs to implement this. who ever chose to do makeAccount()
+    // doesn't necessarily need to return boolean
+    // and doesn't really need to be called addNewPatient either
+    // thats just how i have it in the patientView - Justice
+	public boolean addNewPatient() {
+		return false;
+	}
   
     
 }

@@ -11,46 +11,50 @@ import records.Appointment;
 
 import java.util.ArrayList;
 
-public class Doctor // extends User // need to change the constructor and could get rid of the firstName and LastName fields and ID
+public class Doctor extends User // need to change the constructor and could get rid of most of the fields since they are now inherited
 {
-    private String firstName; 
-    private String lastName; 
-    private ArrayList<Appointment> schedule; //Holds all appointments for the current docotr 
-    private String birthDate; 
+    //private String firstName; 
+    //private String lastName; 
+    //private ArrayList<Appointment> schedule; //Holds all appointments for the current docotr 
+    // private String birthDate; 
     private int ID; //THis is so there is a way for someone to delate a specific doctor
     private Specialization doctorSpecialization; //This keeps track of what specilization the doctor falls under 
 
 
     //These belong to all docotrs
     //This  allows any doctor withen a deparmtnet to accese all patients that were refered to their department 
-    private static List<Doctor> allDoctors = new ArrayList<>();
-    private static int idCounter = 10000; 
+    // private static List<Doctor> allDoctors = new ArrayList<>();
+    //private static int idCounter = 10000; 
 
 
 
     //This creates a doctor account, which is then stored in the allDoctors array
-    public Doctor(String firstName, String lastName, String date, Specialization doctorSpecialization)
+    public Doctor(String name, String surname, String birthdate, String userName, Specialization doctorSpecialization)
     {
-        this.firstName = firstName; 
-        this.lastName = lastName;
-        this.birthDate = date;
-        this.ID = idCounter;
+//        this.firstName = firstName; 
+//        this.lastName = lastName;
+    	super(name, surname, birthdate, userName);
+//        this.birthDate = date;
+        //this.ID = idCounter;
         this.doctorSpecialization = doctorSpecialization; 
-        idCounter += 1;  
-
-        this.schedule = new ArrayList<Appointment>(); 
-
-        allDoctors.add(this); 
+//        idCounter += 1;  
+//
+//        this.schedule = new ArrayList<Appointment>(); 
+//
+//        allDoctors.add(this); 
     }
 
 
+    @Override
     public String toString()
     {
-        return(ID + "\n" + firstName + " "+ lastName + "\n" + doctorSpecialization + "\n");
+        return(super.toString() + "\n" + doctorSpecialization + "\n");
     }
 
     //This method attempts to set up an appointmet.
     //If it fails it returns false, and else it returns true
+
+    // this should go in the officeManager?  - Justice
     public Boolean scheduleAppointment(PatientUser patient, Date start , Date end)
     {
         for (Appointment apointment : schedule)
@@ -77,6 +81,8 @@ public class Doctor // extends User // need to change the constructor and could 
 
 
     //This gets the doctors appointments for the current day
+    
+    // this should also go in the officeManger? - Justice
     public void viewTodaysSchedule()
     {
 
@@ -95,6 +101,7 @@ public class Doctor // extends User // need to change the constructor and could 
     //This gets all of the doctors 
     //Static Type 
 
+ // this should also go in the officeManger? - Justice
     public static List<Doctor> getAllDoctors()
     {
         return allDoctors; 

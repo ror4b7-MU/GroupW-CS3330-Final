@@ -13,7 +13,7 @@ public class PatientUser extends User {
     private ArrayList<Prescription> medList;
     private ArrayList<Appointment> pastAppointment;
     private Doctor GCP;
-
+ 
     public PatientUser(String name, String surname, String date, String userName) {
         super(name, surname, date, userName);
         this.medList=new ArrayList<Prescription>();
