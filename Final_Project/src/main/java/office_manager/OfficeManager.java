@@ -20,12 +20,22 @@ public class OfficeManager {
     // need to make it so that Doctor class extends User
     // private ArrayList<User> Users; ???
     // would simplify some of the following code
+    
+    //To track last index of each type of doctor returned via returnSpecializedDoctor
+    private int lastGCPIndex;
+    private int lastPodiatristIndex;
+    private int lastCardiologistIndex;
+    private int lastOncologistIndex;
 
     // Private constructor to prevent instantiation from outside the class
     private OfficeManager() {
         appointments = new ArrayList<>();
         patients = new ArrayList<>();
         doctors = new ArrayList<>();
+        lastGCPIndex = -1;
+        lastPodiatristIndex = -1;
+        lastCardiologistIndex = -1;
+        lastOncologistIndex = -1;
     }
 
     // Public static method to access the instance
@@ -70,6 +80,44 @@ public class OfficeManager {
 //    	}
 //    	return null;
 //    }
-  
+    
+    //Returns one cardiologist in the list, and returns a different cardiologist each time in tandem with the array list
+    public Doctor returnSpecializedDoc(Specialization specialization) {
+    	//Variable to keep track of the array size
+    	int docArraySize = doctors.size();
+    	
+    	if(specialization = Specialization.GENERAL_CARE_PRACTITIONER) {
+    		
+    	}
+    	
+    	else if(specialization = Specialization.PODIATRIST){
+    		//if podiatrist
+    	}
+    	
+    	else if(specialiazation = Specialization.CARDIOLOGIST) {
+    		//if cardiologist
+    	}
+    		
+    	else if(specialiazation = Specialization.ONCOLOGIST) {
+    		//if oncologist
+    	}
+    	
+    	else {
+    		//No doctor with the given specialization was found
+    	}
+    }
+    
+    public Doctor returnCardiologist() {
+    	//Variable to keep track of
+    	
+    	//for doctor in doctor list
+    	for(int index = 0; index <) {
+    		//If doctor is cardiologist and the index is greater than the previous cardiologist index, return the doctor
+    		if(doctor.doctorSpecialization == CARDIOLOGIST && ) {
+    			//return doctor 
+    		}
+    	}
+    }
+    
     
 }
