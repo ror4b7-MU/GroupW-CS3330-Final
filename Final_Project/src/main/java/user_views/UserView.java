@@ -6,8 +6,8 @@ import users.User;
 public abstract class UserView {
 	
 	// user object will be assigned by login() I'm thinking?
-	private User user;
-	private boolean loggedIn = false;
+	private User user; // this could also be userName not sure which would be easier
+	private boolean loggedIn = false; // logged in status. Set to true on successful login. Set to false when the user logs out
 	
     //getter
 	public User getUser() {
@@ -26,26 +26,33 @@ public abstract class UserView {
         Scanner scanner = null; // Declare scanner outside the try block
         try {
             scanner = new Scanner(System.in); // Assign a new Scanner instance
-            System.out.print("Enter username: ");
+            System.out.print("Enter username: "); // get the userName from scanner
             String userName = scanner.nextLine();
-
+            
+            // get the office manager instance
             OfficeManager officeManager = getOfficeManager();
             User user = officeManager.getUserByUserName(userName);
-        
+            
+            // if the user was found
             if (user != null) {
-                this.user = user;
-                this.loggedIn = true;
+                this.user = user; // set the user
+                this.loggedIn = true; // set the loggedIn status to true
                 return true;
             } else {
-                System.out.println("User not found!");
-
+                System.out.println("User not found!"); // no user with that userName was found
+                // if we are trying to sign in as a patient (Determined in main)
+                // we can create a new user
                 if (this instanceof PatientView) {
-                    System.out.println("Would you like to create a new user? (Yes/No):");
-                    String yesOrNo = scanner.nextLine();
-
+                    System.out.print("Would you like to create a new user? (Yes/No): ");
+                    String yesOrNo = scanner.nextLine(); // ask if the user wants to create a new user
+                    // if yes then we'll call the createNewUser wrapper
                     if (yesOrNo.toLowerCase().equals("yes")) {
-                        createNewUser();
-                        return login(); // Recursive call to login() after creating a new user
+                        if(createNewUser()) {
+                        	return login(); // Give login another go if the creation was successful
+                        }
+                        else {
+                        	return false;
+                        }
                     }
                 }
                 
@@ -85,7 +92,7 @@ public abstract class UserView {
     		}
     		scanner = new Scanner(System.in);
     		this.displayOptions();
-    		System.out.println("Please select an option by typing in a number");
+    		System.out.print("Please select an option by typing in a number: ");
     		int optionNumber = scanner.nextInt();
     		if (this.executeSelectedOption(optionNumber)) {
     			return true;

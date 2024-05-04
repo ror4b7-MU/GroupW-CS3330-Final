@@ -1,21 +1,49 @@
 package user_views;
 
+import java.util.Scanner;
+
 import office_manager.OfficeManager;
+import user_views.UserView.NotLoggedInException;
 
 public class PatientView extends UserView {
 
 	// implements the abstract method from userview
 	// basically just a wrapper for addNewPatient
+	// and obviously provides a way for the user to input a new userName
 	@Override
 	protected boolean createNewUser() {
-		OfficeManager officeManager = getOfficeManager();
-		// addNewPatient isnt implemented yet. it should be implemented in OfficeManager
-		if(officeManager.addNewPatient()) {
-			return true;
+    	Scanner scanner = null;
+    	try {
+    		// scan for user inputs 
+    		scanner = new Scanner(System.in);
+    		System.out.print("Please enter a new Username: ");
+    		String userName = scanner.nextLine();
+    		System.out.print("Please enter your first name: ");
+    		String name = scanner.nextLine();
+    		System.out.print("Please enter you surname: ");
+    		String surname = scanner.nextLine();
+    		System.out.print("Please enter your birth date: ");
+    		String birthDate = scanner.nextLine();
+    		OfficeManager officeManager = getOfficeManager();
+    		// addNewPatient isnt implemented yet. it should be implemented in OfficeManager
+    		if(officeManager.addNewPatient(userName, name, surname, birthDate)) { 
+    			return true;
+    		}
+    		else {
+    			return false;
+    		}
+    	} catch (Exception e) {
+			e.printStackTrace();
+			return false;
 		}
-		return false;
+    	finally {
+            if (scanner != null) {
+                scanner.close();
+            }
+    	}
 	}
 
+	// displays the patients options, could be more if we need more
 	@Override
 	protected void displayOptions() {
 		System.out.println("Welcome! What would you like to do today?");
@@ -25,6 +53,8 @@ public class PatientView extends UserView {
 		System.out.println("Enter 4 to logout");
 	}
 
+	// executes the option that the user selects. again the userView functions that will be called 
+	// basically just provide an interface between the user and the underlying officeManager functions
 	@Override
 	protected boolean executeSelectedOption(int optionNumber) {
 		switch (optionNumber) {

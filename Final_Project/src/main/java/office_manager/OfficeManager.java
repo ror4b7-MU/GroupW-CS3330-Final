@@ -15,11 +15,6 @@ public class OfficeManager {
     private ArrayList<Appointment> appointments;
     private ArrayList<PatientUser> patients;
     private ArrayList<Doctor> doctors;
-    // was thinking again and i guess we could just have an ArrayList of Users?
-    // instead of doctors and patients
-    // need to make it so that Doctor class extends User
-    // private ArrayList<User> Users; ???
-    // would simplify some of the following code
 
     // Private constructor to prevent instantiation from outside the class
     private OfficeManager() {
@@ -76,7 +71,7 @@ public class OfficeManager {
     // doesn't necessarily need to return boolean
     // and doesn't really need to be called addNewPatient either
     // thats just how i have it in the patientView - Justice
-	public boolean addNewPatient() {
+	public boolean addNewPatient(String userName, String name, String surname, String birthDate) {
 		return false;
 	}
   
