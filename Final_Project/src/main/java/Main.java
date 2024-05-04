@@ -14,6 +14,10 @@ public class Main
 {
 	public static void main(String []args)
     {
+		
+		
+		OfficeManager manager = OfficeManager.getInstance();
+		
         Doctor doc = new Doctor("Bob", "Joel", "10/10", Specialization.CARDIOLOGIST); 
         Doctor doc2 = new Doctor("Layla", "Smith", "10/10", Specialization.CARDIOLOGIST);
         
@@ -29,18 +33,18 @@ public class Main
         Date end2 = new Date(2024, 3, 2, 3, 40); 
 
 
-        
-
+        System.outprintln(toString(officeManager.returnCardiologist()));
+        System.outprintln(toString(officeManager.returnCardiologist()));
 
         //Return True
-        System.out.println(doc.scheduleAppointment(pat1, start, end));
+/*        System.out.println(doc.scheduleAppointment(pat1, start, end));
 
 
         //Should return False
         System.out.println(doc.scheduleAppointment(pat2, start2, end2));
 
         //Should return True
-        System.out.println(doc2.scheduleAppointment(pat2, start2, end2));
+        System.out.println(doc2.scheduleAppointment(pat2, start2, end2));*/
 
         // Main program will start here by using scanner to ask the user if they are a Doctor or Patient
         // Based on their response a new instance of PatientView or DoctorView will be initialized
