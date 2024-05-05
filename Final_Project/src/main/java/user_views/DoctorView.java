@@ -24,7 +24,7 @@ public class DoctorView extends UserView{
 	protected void displayOptions() {
 		System.out.println("Welcome! What would you like to do today?");
 		System.out.println("Enter 1 to view your upcoming schedule");
-		System.out.println("Enter 2 to book a new appointement");
+		System.out.println("Enter 2 to refer a patient to another department");
 		System.out.println("Enter 3 to cancel or reschedule an existing appointment");
 		System.out.println("Enter 4 assign or remove a patients medication");
 		System.out.println("Enter 5 to logout");
@@ -65,20 +65,6 @@ public class DoctorView extends UserView{
 	public DoctorView() {
 		//need constructor, but need userview constructor first
 	}
-    
-    public boolean referPatient (PatientUser patient, Specialization spec) {
-        // ArrayList<PatientUser> patList = manager.getPatients();
-        // ArrayList<Doctor> docList = manager.getDoctors();
-
-        spec.addReferral(patient);
-        List<PatientUser> refList = spec.getReferrals();
-        for(PatientUser ref : refList) {
-            if(ref==patient) {
-                return true;
-            }
-        }
-        return false;
-    }
 
 	@Override
 	protected void viewSchedule() {
