@@ -92,4 +92,18 @@ public class PatientUser extends User {
             return false;
         }
     }
+    
+    public boolean removePrescription(Prescription prescription)
+    {
+        try 
+        {
+            medList.remove(prescription); 
+            
+            return true;
+        } 
+        catch (Exception e) 
+        {
+            return false;
+        }
+    }
 }
