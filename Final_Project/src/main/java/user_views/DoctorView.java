@@ -65,19 +65,5 @@ public class DoctorView extends UserView{
 	public DoctorView() {
 		//need constructor, but need userview constructor first
 	}
-    
-    public boolean referPatient (PatientUser patient, Specialization spec) {
-        // ArrayList<PatientUser> patList = manager.getPatients();
-        // ArrayList<Doctor> docList = manager.getDoctors();
-
-        spec.addReferral(patient);
-        List<PatientUser> refList = spec.getReferrals();
-        for(PatientUser ref : refList) {
-            if(ref==patient) {
-                return true;
-            }
-        }
-        return false;
-    }
 
 }

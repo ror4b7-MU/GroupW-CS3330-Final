@@ -381,6 +381,23 @@ public class OfficeManager {
 		return options.get(randint); //returning randomly-selected doctor
 	}
 
+	/* This function refers a given PatientUser patient to the given Specialization spec's referral list, to then be assigned
+	 * to a doctor within that spec. It returns true if the patient is successfully entered into the list, and returns false
+	 * if the patient cannot be found within the referral list. 
+	 */
+	public boolean referPatient (PatientUser patient, Specialization spec) {
+
+        spec.addReferral(patient); //referring patient
+        List<PatientUser> refList = spec.getReferrals();
+        for(PatientUser ref : refList) { //checking that patient was successfully referred
+            if(ref==patient) {
+                return true;
+            }
+        }
+		// in case of failure
+        return false;
+    }
+
 
 	public ArrayList<Appointment> getAppointments() {
 		return appointments;
