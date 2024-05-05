@@ -2,6 +2,7 @@ package office_manager;
 
 import java.util.ArrayList;
 // import java.util.Observable;
+import java.util.Random;
 
 import records.*;
 import users.*;
@@ -325,6 +326,25 @@ public class OfficeManager {
 		System.out.println("No Oncologist found in Doctors list.");
 		return null;
 
+	}
+
+	/* This function identifies the specialization of the doctor being swapped out, and then selects a random
+     * doctor of the same specialization to replace them. This new doctor is then returned by the method itself.
+     */
+    public Doctor changeDoctor(Doctor docName) {
+		ArrayList<Doctor> docList = manager.getDoctors();
+		ArrayList<Doctor> options = new ArrayList<>(); // list of doctors with matching specialization
+		int length=0; // length of option list
+		for (Doctor doc : docList) {
+			if (doc.getDoctorSpecialization()==docName.getDoctorSpecialization()) {
+				options.add(doc);
+				length+=1;
+			}
+		}
+		Random rand = new Random();
+		int randint = rand.nextInt(length); //selecting a random doctor from the list
+
+		return options.get(randint); //returning randomly-selected doctor
 	}
 
 

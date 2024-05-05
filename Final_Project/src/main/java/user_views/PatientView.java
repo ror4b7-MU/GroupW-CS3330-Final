@@ -17,21 +17,6 @@ public class PatientView extends UserView {
 		//need constructor, but need userview constructor first
 	}
 	
-	public Doctor changeDoctor(Doctor docName) {
-		ArrayList<Doctor> docList = manager.getDoctors(); //need getters and setters for the doctor and patient lists
-		ArrayList<Doctor> options = new ArrayList<>();
-		int length=0;
-		for (Doctor doc : docList) {
-			if (doc.getDoctorSpecialization()==docName.getDoctorSpecialization()) {
-				options.add(doc);
-				length+=1;
-			}
-		}
-		Random rand = new Random();
-		int randint = rand.nextInt(length);
-
-		return options.get(randint);
-	}
 
 	// this function makes the appointment NULL, and removes it from the corresponding doctor's schedule
 	public boolean deleteAppt(Appointment appt) {
