@@ -179,6 +179,8 @@ public class Doctor // extends User // need to change the constructor and could 
 	    		return false;
     	}   	
     }
+    
+    
 
 
     //This gets all of the doctors 

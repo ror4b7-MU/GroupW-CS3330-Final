@@ -6,6 +6,7 @@ import javax.print.Doc;
 
 import office_manager.OfficeManager;
 import records.Appointment;
+import records.Prescription;
 import users.Doctor;
 import users.PatientUser;
 import users.Specialization;
@@ -19,7 +20,7 @@ public class Main
 		
 		OfficeManager manager = OfficeManager.getInstance();
 		
-        Doctor doc = new Doctor("Bob", "Joel", "10/10", Specialization.CARDIOLOGIST); 
+        Doctor doc1 = new Doctor("Bob", "Joel", "10/10", Specialization.CARDIOLOGIST); 
         Doctor doc2 = new Doctor("Layla", "Smith", "10/10", Specialization.CARDIOLOGIST);
 /*
 * //adds doctors to singleton doc list 
@@ -38,20 +39,34 @@ public class Main
         Date start2 = new Date(2024, 3, 2, 3, 15); 
         Date end2 = new Date(2024, 3, 2, 3, 40); 
 
-/****Rachel method tests****
+//****Rachel method tests****
+
+/////Return Doc types/////
+
 
 //Cycles through cardiologists in doc list        
-        Doctor cardio1 = manager.returnSpecializedDoc(Specialization.PODIATRIST);
-        Doctor cardio2 = manager.returnSpecializedDoc(Specialization.CARDIOLOGIST);
-        Doctor cardio3 = manager.returnSpecializedDoc(Specialization.CARDIOLOGIST);
+//        Doctor cardio1 = manager.returnSpecializedDoc(Specialization.PODIATRIST);
+//        Doctor cardio2 = manager.returnSpecializedDoc(Specialization.CARDIOLOGIST);
+//        Doctor cardio3 = manager.returnSpecializedDoc(Specialization.CARDIOLOGIST);
+//        
+//        System.out.println(cardio1.toString());
+//        System.out.println(cardio2.toString());
+//        System.out.println(cardio3.toString());
         
-        System.out.println(cardio1.toString());
-        System.out.println(cardio2.toString());
-        System.out.println(cardio3.toString());
+
+/////Assign & Delete Patient Medications/////
+      
+        //Doc 1 assigns albuterol and ibuprofen to patient 1
+        doc1.assignPatientMedication(pat1, Prescription.ALBUTEROL);
+        doc1.assignPatientMedication(pat1, Prescription.IBUPROFEN);
+        
+        //List prints albuterol and ibuprofen
+        System.out.println(pat1.getMedList());
+        
+        
 
 
-
-/***************************/
+//****End Rachel method tests****/
         
         
         //Return True
