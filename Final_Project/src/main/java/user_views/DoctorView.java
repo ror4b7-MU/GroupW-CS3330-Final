@@ -24,7 +24,7 @@ public class DoctorView extends UserView{
 	protected void displayOptions() {
 		System.out.println("Welcome! What would you like to do today?");
 		System.out.println("Enter 1 to view your upcoming schedule");
-		System.out.println("Enter 2 to book a new appointement");
+		System.out.println("Enter 2 to refer a patient to another department");
 		System.out.println("Enter 3 to cancel or reschedule an existing appointment");
 		System.out.println("Enter 4 assign or remove a patients medication");
 		System.out.println("Enter 5 to logout");
