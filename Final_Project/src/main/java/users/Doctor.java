@@ -35,7 +35,7 @@ public class Doctor // extends User // need to change the constructor and could 
         this.lastName = lastName;
         this.birthDate = date;
         this.ID = idCounter;
-        this.doctorSpecialization = doctorSpecialization; 
+        this.setDoctorSpecialization(doctorSpecialization); 
         idCounter += 1;  
 
         this.schedule = new ArrayList<Appointment>(); 
@@ -46,7 +46,7 @@ public class Doctor // extends User // need to change the constructor and could 
 
     public String toString()
     {
-        return(ID + "\n" + firstName + " "+ lastName + "\n" + doctorSpecialization + "\n");
+        return(ID + "\n" + firstName + " "+ lastName + "\n" + getDoctorSpecialization() + "\n");
     }
 
     //This method attempts to set up an appointmet.
@@ -72,7 +72,7 @@ public class Doctor // extends User // need to change the constructor and could 
     //This method gets all the refered patients from the docotrs type 
     public List<PatientUser> getReferedPatients()
     {
-        return doctorSpecialization.getReferrals();
+        return getDoctorSpecialization().getReferrals();
     }
 
 
@@ -99,6 +99,16 @@ public class Doctor // extends User // need to change the constructor and could 
     {
         return allDoctors; 
     }
+
+
+	public Specialization getDoctorSpecialization() {
+		return doctorSpecialization;
+	}
+
+
+	public void setDoctorSpecialization(Specialization doctorSpecialization) {
+		this.doctorSpecialization = doctorSpecialization;
+	}
 
 
 }
