@@ -83,22 +83,18 @@ public class OfficeManager {
 		return true;
 	}
 	
-//    public Boolean scheduleAppointment(PatientUser patient, Date start , Date end)
-//    {
-//        for (Appointment apointment : schedule)
-//        {
-//            if (apointment.checkOverLap(start, end) == true)
-//            {
-//                return false;
-//            }
-//        }
-//
-//        Appointment appointment = new Appointment(patient, this, lastName, firstName, start, end); 
-//
-//        schedule.add(appointment);
-//
-//        return true;
-//    }
+    public Boolean scheduleAppointment(PatientUser patient, Doctor doctor, Date start , Date end, String reason)
+    {
+    	Appointment appointment = new Appointment(patient, doctor, reason, null, start, end); 
+    	for(Appointment app : this.getAppointments()) {
+    		if(app.getDoctor().equals(doctor) && app.checkOverLap(start, end)) {
+    			System.out.println("Error overlapping appointment dates");
+    			return false;
+    		}
+    	}
+    	this.getAppointments().add(appointment);
+        return true;
+    }
 	
     public void viewTodaysSchedule(Doctor doctor)
     {
