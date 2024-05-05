@@ -11,11 +11,9 @@ public class PatientView extends UserView {
 	// basically just a wrapper for addNewPatient
 	// and obviously provides a way for the user to input a new userName
 	@Override
-	protected boolean createNewUser() {
-    	Scanner scanner = null;
+	public boolean createNewUser() {
     	try {
     		// scan for user inputs 
-    		scanner = new Scanner(System.in);
     		System.out.print("Please enter a new Username: ");
     		String userName = scanner.nextLine();
     		System.out.print("Please enter your first name: ");
@@ -26,21 +24,19 @@ public class PatientView extends UserView {
     		String birthDate = scanner.nextLine();
     		OfficeManager officeManager = getOfficeManager();
     		// addNewPatient isnt implemented yet. it should be implemented in OfficeManager
+    		System.out.println("officeManager patients array size" + officeManager.getPatients().size());
     		if(officeManager.addNewPatient(userName, name, surname, birthDate)) { 
+    			System.out.println("officeManager patients array size" + officeManager.getPatients().size());
     			return true;
     		}
     		else {
+    			System.out.println("Failed to create user!");
     			return false;
     		}
     	} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
-    	finally {
-            if (scanner != null) {
-                scanner.close();
-            }
-    	}
 	}
 
 	// displays the patients options, could be more if we need more
@@ -68,7 +64,7 @@ public class PatientView extends UserView {
 	    	// this.cancelOrReschedulApp();
 	    	break;
 	    case 4:
-	    	// this.logout
+	    	this.logout();
 	    default:
 	    	return false;
 		}

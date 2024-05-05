@@ -49,16 +49,17 @@ public class OfficeManager {
     // returns null if user not found or invalid params
     public User getUserByUserName(String userName) {
     	if(userName == null) {
+    		//System.out.println("username is null when passed to getUserByUserName");
     		return null;
     	}
     	else {
     		for(User user : this.patients) {
-    			if(user.getUserName() == userName) {
+    			if(user.getUserName().equals(userName)) {
     				return user;
     			}
     		}
     		for(User user : this.doctors) {
-    			if(user.getUserName() == userName) {
+    			if(user.getUserName().equals(userName)) {
     				return user;
     			}
     		}
@@ -72,7 +73,10 @@ public class OfficeManager {
     // and doesn't really need to be called addNewPatient either
     // thats just how i have it in the patientView - Justice
 	public boolean addNewPatient(String userName, String name, String surname, String birthDate) {
-		return false;
+		PatientUser newUser = new PatientUser(name, surname, birthDate, userName);
+		this.getPatients().add(newUser);
+		System.out.println("patients size: " + this.patients.size());
+		return true;
 	}
   
     

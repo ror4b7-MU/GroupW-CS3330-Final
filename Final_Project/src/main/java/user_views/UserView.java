@@ -6,71 +6,77 @@ import users.User;
 public abstract class UserView {
 	
 	// user object will be assigned by login() I'm thinking?
-	private User user; // this could also be userName not sure which would be easier
-	private boolean loggedIn = false; // logged in status. Set to true on successful login. Set to false when the user logs out
+	protected User user; // this could also be userName not sure which would be easier
+	protected boolean loggedIn = false; // logged in status. Set to true on successful login. Set to false when the user logs out
+	protected Scanner scanner;
 	
-    //getter
-	public User getUser() {
-		return user;
+	public UserView() {
+		scanner = new Scanner(System.in);
 	}
-
+	
 	//Provide Access to the OfficeManager which will have all the office info
 	// This provides a clear way to get the singleton instance of OfficeManager
     protected OfficeManager getOfficeManager() {
         return OfficeManager.getInstance();
     }
+	
+    //getters and setters
+	public User getUser() {
+		return user;
+	}
+	
+	private void setUser(User user) {
+		this.user = user;
+	}
+	
+	public boolean getLoggedInStatus() {
+		return loggedIn;
+	}
+	
+	private void setLoggedInStatus(boolean loggedInStatus) {
+		this.loggedIn = loggedInStatus;
+	}
+
     
     // function imitates logging into the system
     // does so by simply setting the user in user view
-    public boolean login() {
-        Scanner scanner = null; // Declare scanner outside the try block
-        try {
-            scanner = new Scanner(System.in); // Assign a new Scanner instance
-            System.out.print("Enter username: "); // get the userName from scanner
-            String userName = scanner.nextLine();
-            
-            // get the office manager instance
-            OfficeManager officeManager = getOfficeManager();
-            User user = officeManager.getUserByUserName(userName);
-            
-            // if the user was found
-            if (user != null) {
-                this.user = user; // set the user
-                this.loggedIn = true; // set the loggedIn status to true
-                return true;
-            } else {
-                System.out.println("User not found!"); // no user with that userName was found
-                // if we are trying to sign in as a patient (Determined in main)
-                // we can create a new user
-                if (this instanceof PatientView) {
-                    System.out.print("Would you like to create a new user? (Yes/No): ");
-                    String yesOrNo = scanner.nextLine(); // ask if the user wants to create a new user
-                    // if yes then we'll call the createNewUser wrapper
-                    if (yesOrNo.toLowerCase().equals("yes")) {
-                        if(createNewUser()) {
-                        	return login(); // Give login another go if the creation was successful
-                        }
-                        else {
-                        	return false;
-                        }
-                    }
-                }
-                
-                return false;
-            }
-        } catch (Exception e) {
-            // Handle any exceptions that may occur
-            System.out.println("An error occurred: " + e.getMessage());
-            return false;
-        } finally {
-            // Ensure that the Scanner instance is always closed
-            // even if an exception occurs or the method returns early
-            if (scanner != null) {
-                scanner.close();
-            }
-        }
-    }
-    
+	public boolean login() {
+	    //Scanner scanner = new Scanner(System.in);
+	    try {
+	        boolean loggedIn = false;
+	        while (!loggedIn) {
+	            System.out.print("Enter username to login: ");
+	            String userName = scanner.nextLine();
+	            
+	            OfficeManager officeManager = getOfficeManager();
+	            User user = officeManager.getUserByUserName(userName);
+	            
+	            if (user != null) {
+	                this.setUser(user);
+	                this.setLoggedInStatus(true);
+	                loggedIn = true;
+	            } else {
+	                System.out.println("User not found!");
+	                if (this instanceof PatientView) {
+	                    System.out.print("Would you like to create a new user? (Yes/No): ");
+	                    String yesOrNo = scanner.nextLine();
+	                    if (yesOrNo.equalsIgnoreCase("yes")) {
+	                        if (createNewUser()) {
+	                            // User created successfully, continue with login process
+	                            continue;
+	                        }
+	                    }
+	                }
+	                // If no user found and no new user is created, exit the loop
+	                break;
+	            }
+	        }
+	        return loggedIn;
+	    } catch (Exception e) {
+	        System.out.println("An error occurred: " + e.getMessage());
+	        return false;
+	    }
+	}
     
     
     // if a userName is not found during login a new "account" (basically just a new User) can be created
@@ -85,31 +91,25 @@ public abstract class UserView {
     // into the systems functionality by calling the two following functions displayOptions and executeSelectedOption
     // this is the function that i want to run in a loop in main
     public boolean runUserEnvironment() {
-    	Scanner scanner = null;
-    	try {
-    		if(this.loggedIn == false) {
+    	// Scanner scanner = null;
+    	try { 
+    		if(this.loggedIn == false) { // throw an exception if no one is logged in
     			throw new NotLoggedInException("Error: No user is logged in");
     		}
     		scanner = new Scanner(System.in);
-    		this.displayOptions();
+    		this.displayOptions(); // first display the options
     		System.out.print("Please select an option by typing in a number: ");
-    		int optionNumber = scanner.nextInt();
-    		if (this.executeSelectedOption(optionNumber)) {
+    		int optionNumber = scanner.nextInt(); // scan for the users input
+    		if (this.executeSelectedOption(optionNumber)) { // execute the selected option
     			return true;
     		}
     		else {
     			return false;
     		}
-    	} catch (Exception e) {
+    	} catch (Exception e) { // if an exception is caught print it and return false
 			e.printStackTrace();
 			return false;
 		}
-    	finally {
-            if (scanner != null) {
-                scanner.close();
-            }
-    	}
-    
 	}
     
     // this function will display some options that the user can choose to perform
@@ -137,8 +137,21 @@ public abstract class UserView {
     	
     }
     
+    // logs the user out
+    // its nothing fancy just sets the user to null and the loggedIn status to false
     protected boolean logout() {
-    	return false;
+    	try {
+    		if(this.loggedIn == false) {
+    			throw new NotLoggedInException("Error: No user is logged in");
+    		}
+    		this.setUser(null);
+    		this.setLoggedInStatus(false);
+    		return true;
+    	}
+    	catch (Exception e){
+    		e.printStackTrace();
+    		return false;
+    	}	
     }
     
    

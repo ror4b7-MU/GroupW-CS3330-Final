@@ -1,6 +1,7 @@
 
 
 import java.util.Date;
+import java.util.Scanner;
 
 import javax.print.Doc;
 
@@ -66,11 +67,35 @@ public class Main
 		// Im thinking this could maybe run in a loop that always loops back to the displayOptions part, 
 		// one of the options could be to logout. 
 		
-		PatientView newPatientView = new PatientView();
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Indicate (D) for doctor login or (P) for patient: ");
+		String DoctorOrPatient = scanner.nextLine(); 
+		UserView newUserView = null;
+		if(DoctorOrPatient.toLowerCase().equals("d")) {
+			newUserView = new DoctorView();
+		}
+		else if (DoctorOrPatient.toLowerCase().equals("p")) {
+			newUserView = new PatientView();
+		}
 		
-		newPatientView.login();
+//		PatientView newUserView = new PatientView();
+		
+		// attempt to login
+		if(newUserView.login()) {
+			
+			// this loop will run until the user decides to logout
+			while(newUserView.getLoggedInStatus() == true) {
+				newUserView.runUserEnvironment();
+			}
+			System.out.println("Successfully Logged Out! Run the program again to log back in");
+		}
+		else {
+			System.out.println("Failed to login");
+		}
 		
 
+		
+		scanner.close();
     
 
     }
