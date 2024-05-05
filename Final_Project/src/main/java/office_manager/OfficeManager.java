@@ -1,7 +1,9 @@
 package office_manager;
 
 import java.util.ArrayList;
-import java.util.List;
+
+import java.util.Date;
+
 // import java.util.Observable;
 import java.util.Random;
 
@@ -51,37 +53,66 @@ public class OfficeManager {
     
     // simple functions to search the patient and doctor arrayLists by userName
     // returns null if user not found or invalid params
-    public PatientUser getPatientByUserName(String userName) {
+    public User getUserByUserName(String userName) {
     	if(userName == null) {
+    		//System.out.println("username is null when passed to getUserByUserName");
     		return null;
     	}
     	else {
-    		for(PatientUser patient : this.patients) {
-    			if(patient.getUserName() == userName) {
-    				return patient;
+    		for(User user : this.patients) {
+    			if(user.getUserName().equals(userName)) {
+    				return user;
+    			}
+    		}
+    		for(User user : this.doctors) {
+    			if(user.getUserName().equals(userName)) {
+    				return user;
     			}
     		}
   
     	}
     	return null;
     }
-    // would be another one for doctors but doctor isn't a subclass of user yet
     
-    // instead of having different functions for searching the doctors and patients
-    // could have just one :}
-//    public User getUserByUserName(String userName) {
-//    	if(userName == null) {
-//    		return null;
-//    	}
-//    	else {
-//    		for(User user : this.users) {
-//    			if(user.getUserName() == userName) {
-//    				return user;
-//    			}
-//    		}
-//    	}
-//    	return null;
-//    }
+    // someone needs to implement this. who ever chose to do makeAccount()
+    // doesn't necessarily need to return boolean
+    // and doesn't really need to be called addNewPatient either
+    // thats just how i have it in the patientView - Justice
+	public boolean addNewPatient(String userName, String name, String surname, String birthDate) {
+		PatientUser newUser = new PatientUser(name, surname, birthDate, userName);
+		this.getPatients().add(newUser);
+		System.out.println("patients size: " + this.patients.size());
+		return true;
+	}
+	
+    public Boolean scheduleAppointment(PatientUser patient, Doctor doctor, Date start , Date end, String reason)
+    {
+    	Appointment appointment = new Appointment(patient, doctor, reason, null, start, end); 
+    	for(Appointment app : this.getAppointments()) {
+    		if(app.getDoctor().equals(doctor) && app.checkOverLap(start, end)) {
+    			System.out.println("Error overlapping appointment dates");
+    			return false;
+    		}
+    	}
+    	this.getAppointments().add(appointment);
+        return true;
+    }
+	
+    public void viewTodaysSchedule(Doctor doctor)
+    {
+
+        Date date = new Date(); 
+
+        for (Appointment appointment : appointments)
+        {
+            if (appointment.isSameDay(date))
+            {
+            	if (appointment.getDoctor().equals(doctor)) {
+            	}
+                System.out.println(appointment);
+            }
+        }
+    }
     
     public boolean addDoctor(Doctor doctor)
     {
