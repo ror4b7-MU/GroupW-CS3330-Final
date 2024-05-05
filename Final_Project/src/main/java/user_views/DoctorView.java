@@ -38,19 +38,19 @@ public class DoctorView extends UserView{
 	protected boolean executeSelectedOption(int optionNumber) {
 		switch (optionNumber) {
 	    case 1:
-	    	// this.viewSchedule();
+	    	this.viewSchedule();
 	        break;
 	    case 2:
-	    	// this.bookAppointment();
+	    	this.bookAppointment();
 	        break;
 	    case 3:
-		   	// this.cancelOrReschedulApp();
+		   	this.cancelOrReschedulApp();
 		   	break;
 		case 4:
-		 	// this.assignOrRemovePatientMed();
+		 	this.assignOrRemovePatientMed();
 		    break;
 		case 5: 
-		    	// this.logout
+		    this.logout();
 		default:
 		  	return false;
 		}

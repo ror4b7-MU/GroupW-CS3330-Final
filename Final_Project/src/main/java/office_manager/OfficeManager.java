@@ -97,21 +97,42 @@ public class OfficeManager {
         return true;
     }
 	
+    // function to view the appointments for a doctor
+    // not for patients I think well need another one for that
     public void viewTodaysSchedule(Doctor doctor)
     {
 
         Date date = new Date(); 
-
-        for (Appointment appointment : appointments)
+        int count = 0;
+        for (Appointment appointment : this.getAppointments()) // loop through all the appointments
         {
             if (appointment.isSameDay(date))
             {
             	if (appointment.getDoctor().equals(doctor)) {
-            	}
-                System.out.println(appointment);
+            		System.out.println(appointment.toString());
+            		count++;
+            	}  
             }
         }
+        if(count == 0) { // if there are no appointments today print
+        	System.out.println("No appointments found for today");
+        }
     }
+    
+    // this function just prints all the appointments for a given user, patient or doctor
+    public void viewUserAppointments(User user) {
+    	int count = 0;
+    	for (Appointment app : this.getAppointments()) {
+    		if(app.getDoctor().equals(user) || app.getPatient().equals(user)) {
+    			System.out.println(app.toString());
+    			count++;
+    		}
+    	}
+    	if(count == 0) {
+    		System.out.println("No appointments found");
+    	}
+    }
+    
     
     public boolean addDoctor(Doctor doctor)
     {
