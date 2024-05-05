@@ -332,7 +332,7 @@ public class OfficeManager {
      * doctor of the same specialization to replace them. This new doctor is then returned by the method itself.
      */
     public Doctor changeDoctor(Doctor docName) {
-		ArrayList<Doctor> docList = manager.getDoctors();
+		ArrayList<Doctor> docList = instance.getDoctors();
 		ArrayList<Doctor> options = new ArrayList<>(); // list of doctors with matching specialization
 		int length=0; // length of option list
 		for (Doctor doc : docList) {
