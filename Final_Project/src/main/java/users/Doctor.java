@@ -7,7 +7,7 @@ import javax.print.Doc;
 import javax.swing.plaf.nimbus.State;
 
 import records.Appointment;
-
+import records.Prescription;
 
 import java.util.ArrayList;
 
@@ -89,6 +89,95 @@ public class Doctor // extends User // need to change the constructor and could 
                 System.out.println(apointment);
             }
         }
+    }
+    
+    public boolean assignPatientMedication(PatientUser patient, Prescription medication)
+    {
+    	
+    	switch(medication) {
+	    	case ALBUTEROL: 
+	    		//return true upon successful addition
+	    		if(patient.addPrescription(Prescription.ALBUTEROL)) {
+	    			return true;
+	    		}
+	    		//else return false
+	    		return false;
+	    		
+	    	case AMOXICILLIN:
+	    		//return true upon successful addition
+	    		if(patient.addPrescription(Prescription.AMOXICILLIN)) {
+	    			return true;
+	    		}
+	    		//else return false
+	    		return false;
+	    		
+	    	case ANASTROZOLE:
+	    		//return true upon successful addition
+	    		if(patient.addPrescription(Prescription.ANASTROZOLE)) {
+	    			return true;
+	    		}
+	    		//else return false
+	    		return false;
+	    		
+	    	case BACTRIM:
+	    		//return true upon successful addition
+	    		if(patient.addPrescription(Prescription.BACTRIM)) {
+	    			return true;
+	    		}
+	    		//else return false
+	    		return false;
+	    		
+	    	case DIGOXIN:
+	    		//return true upon successful addition
+	    		if(patient.addPrescription(Prescription.DIGOXIN)) {
+	    			return true;
+	    		}
+	    		//else return false
+	    		return false;
+	    		
+	    	case DILTIAZEM:
+	    		//return true upon successful addition
+	    		if(patient.addPrescription(Prescription.DILTIAZEM)) {
+	    			return true;
+	    		}
+	    		//else return false
+	    		return false;
+	    		
+	    	case IBUPROFEN:
+	    		//return true upon successful addition
+	    		if(patient.addPrescription(Prescription.IBUPROFEN)) {
+	    			return true;
+	    		}
+	    		//else return false
+	    		return false;
+	    		
+	    	case LETROZOLE:
+	    		//return true upon successful addition
+	    		if(patient.addPrescription(Prescription.LETROZOLE)) {
+	    			return true;
+	    		}
+	    		//else return false
+	    		return false;
+	    		
+	    	case MACROBID:
+	    		//return true upon successful addition
+	    		if(patient.addPrescription(Prescription.MACROBID)) {
+	    			return true;
+	    		}
+	    		//else return false
+	    		return false;
+	    		
+	    	case VERAPAMIL:
+	    		//return true upon successful addition
+	    		if(patient.addPrescription(Prescription.VERAPAMIL)) {
+	    			return true;
+	    		}
+	    		//else return false
+	    		return false;
+	    		
+	    	default:
+	    		return false;
+    	}   	
     }
 
 

@@ -78,4 +78,18 @@ public class PatientUser extends User {
     public void setGCP(Doctor gCP) {
         GCP = gCP;
     }
+    
+    public boolean addPrescription(Prescription prescription)
+    {
+        try 
+        {
+            medList.add(prescription); 
+            
+            return true;
+        } 
+        catch (Exception e) 
+        {
+            return false;
+        }
+    }
 }
