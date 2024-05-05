@@ -81,26 +81,40 @@ public class OfficeManager {
 //    	return null;
 //    }
     
+    public boolean addDoctor(Doctor doctor)
+    {
+        try 
+        {
+            doctors.add(doctor); 
+            
+            return true;
+        } 
+        catch (Exception e) 
+        {
+            return false;
+        }
+    }
+    
     //Returns the next doctor of specified specialty in the arraylist, then starts over from the beginning when it reaches the end
     public Doctor returnSpecializedDoc(Specialization specialization) {
 
     	try {
-        	if(specialization = Specialization.GENERAL_CARE_PRACTITIONER) {
+        	if(specialization == Specialization.GENERAL_CARE_PRACTITIONER) {
         		//If GCP wanted:
         		return returnGCP();
         	}
         	
-        	else if(specialization = Specialization.PODIATRIST){
+        	else if(specialization == Specialization.PODIATRIST){
         		//if podiatrist wanted:
         		return returnPodiatrist();
         	}
         	
-        	else if(specialiazation = Specialization.CARDIOLOGIST) {
+        	else if(specialization == Specialization.CARDIOLOGIST) {
         		//if cardiologist wanted:
         		return returnCardiologist();
         	}
         		
-        	else if(specialiazation = Specialization.ONCOLOGIST) {
+        	else if(specialization == Specialization.ONCOLOGIST) {
         		//if oncologist wanted:
         		return returnOncologist();
         	}
@@ -110,55 +124,60 @@ public class OfficeManager {
         		System.out.println("The given specialization was not found.");
         	}
     	}
-    	
-    	catch {
-    		System.out.println("Something went wrong.");
+    	catch(Exception e) {
+    		System.out.println("Something went wrong in method returnSpecializedDoc.");
     	}
+    	
+    	//Upon failure, return null
+    	return null;
     }
     
     //Returns the next gcp listed in the arraylist, then starts over from the beginning when it reaches the end
 	public Doctor returnGCP() {
 		try {
 			
-			if(doctors.getsize() == 0) {
+			if(doctors.size() == 0) {
 				System.out.println("No doctors in Doctor List.");
+				return null;
 			}
 			
 			//for doctor in doctor list
-	    	for(int index = 0; index < doctors.getsize(), index++) {
+	    	for(int index = 0; index < doctors.size(); index++) {
 	    		//If doctor is GCP and the index is greater than the previous GCP index, return the doctor
-	    		if(doctor.doctorSpecialization == GENERAL_CARE_PRACTITIONER && index > lastGCPindex) {
+	    		if(doctors.get(index).getDoctorSpecialization() == Specialization.GENERAL_CARE_PRACTITIONER && index > lastGCPIndex) {
 	    			
 	    			//Set new lastIndex to the current one
-	    			lastGCPindex = index;
+	    			lastGCPIndex = index;
 	    			
 	    			//return doctor
-	    			return doctors.index;
+	    			return doctors.get(index);
 	    		}
 	    		  		
 	    	}
 	    	
 			//If there are no GCPs with index greater than the previous index, reset the previous index counter to search from 
 			//the beginning of the array and loop again
-			lastGCPindex = -1; 
+			lastGCPIndex = -1; 
 			
-	    	for(int index = 0; index < doctors.getsize(), index++) {
+	    	for(int index = 0; index < doctors.size(); index++) {
 	    		//If doctor is GCP and the index is greater than the previous GCP index, return the doctor
-	    		if(doctor.doctorSpecialization == GENERAL_CARE_PRACTITIONER && index > lastGCPindex) {
+	    		if(doctors.get(index).getDoctorSpecialization() == Specialization.GENERAL_CARE_PRACTITIONER && index > lastGCPIndex) {
 	    			
 	    			//Set new lastIndex to the current one
-	    			lastGCPindex = index;
+	    			lastGCPIndex = index;
 	    			
 	    			//return doctor
-	    			return doctors.index;
+	    			return doctors.get(index);
 	    		}
 	    	}  
 			
 		}
-		
-		catch{
+		catch (Exception e){
 			System.out.println("Something went wrong.");
 		}
+		
+		System.out.println("No General Practitioner found in Doctors list.");
+		return null;
 
 	}
     
@@ -166,91 +185,96 @@ public class OfficeManager {
     public Doctor returnPodiatrist() {
 		try {
 			
-			if(doctors.getsize() == 0) {
+			if(doctors.size() == 0) {
 				System.out.println("No doctors in Doctor List.");
+				return null;
 			}
 			
 			//for doctor in doctor list
-	    	for(int index = 0; index < doctors.getsize(), index++) {
+	    	for(int index = 0; index < doctors.size(); index++) {
 	    		//If doctor is Podiatrist and the index is greater than the previous Podiatrist index, return the doctor
-	    		if(doctor.doctorSpecialization == PODIATRIST && index > lastPodiatristindex) {
+	    		if(doctors.get(index).getDoctorSpecialization() == Specialization.PODIATRIST && index > lastPodiatristIndex) {
 	    			
 	    			//Set new lastIndex to the current one
-	    			lastPodiatristindex = index;
+	    			lastPodiatristIndex = index;
 	    			
 	    			//return doctor
-	    			return doctors.index;
+	    			return doctors.get(index);
 	    		}
 	    		  		
 	    	}
 	    	
 			//If there are no Podiatrists with index greater than the previous index, reset the previous index counter to search from 
 			//the beginning of the array and loop again
-			lastPodiatristindex = -1; 
+			lastPodiatristIndex = -1; 
 			
-	    	for(int index = 0; index < doctors.getsize(), index++) {
+	    	for(int index = 0; index < doctors.size(); index++) {
 	    		//If doctor is Podiatrist and the index is greater than the previous Podiatrist index, return the doctor
-	    		if(doctor.doctorSpecialization == PODIATRIST && index > lastPodiatristindex) {
+	    		if(doctors.get(index).getDoctorSpecialization() == Specialization.PODIATRIST && index > lastPodiatristIndex) {
 	    			
 	    			//Set new lastIndex to the current one
-	    			lastPodiatristindex = index;
+	    			lastPodiatristIndex = index;
 	    			
 	    			//return doctor
-	    			return doctors.index;
+	    			return doctors.get(index);
 	    		}
 	    	}  
 			
 		}
-		
-		catch{
+		catch (Exception e){
 			System.out.println("Something went wrong.");
 		}
 
+		System.out.println("No Podiatrist found in Doctors list.");
+		return null;
 	}
     
     //returns the next cardiologist listed in the arraylist, then starts over from the beginning when it reaches the end
     public Doctor returnCardiologist()  {
 		try {
 			
-			if(doctors.getsize() == 0) {
+			if(doctors.size() == 0) {
 				System.out.println("No doctors in Doctor List.");
+				return null;
 			}
 			
 			//for doctor in doctor list
-	    	for(int index = 0; index < doctors.getsize(), index++) {
+	    	for(int index = 0; index < doctors.size(); index++) {
 	    		//If doctor is Cardiologist and the index is greater than the previous Cardiologist index, return the doctor
-	    		if(doctor.doctorSpecialization == CARDIOLOGIST && index > lastCardiologistindex) {
+	    		if(doctors.get(index).getDoctorSpecialization() == Specialization.CARDIOLOGIST && index > lastCardiologistIndex) {
 	    			
 	    			//Set new lastIndex to the current one
-	    			lastCardiologistindex = index;
+	    			lastCardiologistIndex = index;
 	    			
 	    			//return doctor
-	    			return doctors.index;
+	    			return doctors.get(index);
 	    		}
 	    		  		
 	    	}
 	    	
 			//If there are no Cardiologists with index greater than the previous index, reset the previous index counter to search from 
 			//the beginning of the array and loop again
-			lastCardiologistindex = -1; 
+			lastCardiologistIndex = -1; 
 			
-	    	for(int index = 0; index < doctors.getsize(), index++) {
+	    	for(int index = 0; index < doctors.size(); index++) {
 	    		//If doctor is Cardiologist and the index is greater than the previous Cardiologist index, return the doctor
-	    		if(doctor.doctorSpecialization == CARDIOLOGIST && index > lastCardiologistindex) {
+	    		if(doctors.get(index).getDoctorSpecialization() == Specialization.CARDIOLOGIST && index > lastCardiologistIndex) {
 	    			
 	    			//Set new lastIndex to the current one
-	    			lastCardiologistindex = index;
+	    			lastCardiologistIndex = index;
 	    			
 	    			//return doctor
-	    			return doctors.index;
+	    			return doctors.get(index);
 	    		}
 	    	}  
 			
 		}
-		
-		catch{
-			System.out.println("Something went wrong.");
+		catch(Exception e) {
+			System.out.println("Something went wrong in method returnCardiologist.");
 		}
+		
+		System.out.println("No Cardiologist found in Doctors list.");
+		return null;
 
 	}
     
@@ -258,45 +282,48 @@ public class OfficeManager {
     public Doctor returnOncologist()  {
 		try {
 			
-			if(doctors.getsize() == 0) {
+			if(doctors.size() == 0) {
 				System.out.println("No doctors in Doctor List.");
+				return null;
 			}
 			
 			//for doctor in doctor list
-	    	for(int index = 0; index < doctors.getsize(), index++) {
+	    	for(int index = 0; index < doctors.size(); index++) {
 	    		//If doctor is Oncologist and the index is greater than the previous Oncologist index, return the doctor
-	    		if(doctor.doctorSpecialization == ONCOLOGIST && index > lastOncologistindex) {
+	    		if(doctors.get(index).getDoctorSpecialization() == Specialization.ONCOLOGIST && index > lastOncologistIndex) {
 	    			
 	    			//Set new lastIndex to the current one
-	    			lastOncologistindex = index;
+	    			lastOncologistIndex = index;
 	    			
 	    			//return doctor
-	    			return doctors.index;
+	    			return doctors.get(index);
 	    		}
 	    		  		
 	    	}
 	    	
 			//If there are no Oncologists with index greater than the previous index, reset the previous index counter to search from 
 			//the beginning of the array and loop again
-			lastOncologistindex = -1; 
+			lastOncologistIndex = -1; 
 			
-	    	for(int index = 0; index < doctors.getsize(), index++) {
+	    	for(int index = 0; index < doctors.size(); index++) {
 	    		//If doctor is Oncologist and the index is greater than the previous Oncologist index, return the doctor
-	    		if(doctor.doctorSpecialization == ONCOLOGIST && index > lastOncologistindex) {
+	    		if(doctors.get(index).getDoctorSpecialization() == Specialization.ONCOLOGIST && index > lastOncologistIndex) {
 	    			
 	    			//Set new lastIndex to the current one
-	    			lastOncologistindex = index;
+	    			lastOncologistIndex = index;
 	    			
 	    			//return doctor
-	    			return doctors.index;
+	    			return doctors.get(index);
 	    		}
 	    	}  
 			
 		}
-		
-		catch{
+		catch(Exception e) {
 			System.out.println("Something went wrong.");
 		}
+		
+		System.out.println("No Oncologist found in Doctors list.");
+		return null;
 
 	}
     

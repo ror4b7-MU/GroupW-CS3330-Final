@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.print.Doc;
 
+import office_manager.OfficeManager;
 import records.Appointment;
 import users.Doctor;
 import users.PatientUser;
@@ -20,8 +21,13 @@ public class Main
 		
         Doctor doc = new Doctor("Bob", "Joel", "10/10", Specialization.CARDIOLOGIST); 
         Doctor doc2 = new Doctor("Layla", "Smith", "10/10", Specialization.CARDIOLOGIST);
-        
-    
+/*
+* //adds doctors to singleton doc list 
+* 		if(!(manager.addDoctor(doc))) {
+* 			System.out.println("Failed to add"); }; if(!(manager.addDoctor(doc2))) {
+* 			System.out.println("Failed to add"); 
+* 		}
+*/
         PatientUser pat1 = new PatientUser("Smith", "Name", "10/10", "n.smith"); 
 
         PatientUser pat2 = new PatientUser("Bob", "Sur", "10/10", "s.bob"); 
@@ -32,15 +38,20 @@ public class Main
         Date start2 = new Date(2024, 3, 2, 3, 15); 
         Date end2 = new Date(2024, 3, 2, 3, 40); 
 
-/****Rachel method tests****/
-        //Should cycle through the cardiologists, and print the first two
-        System.outprintln(toString(officeManager.returnSpecializedDoc(CARDIOLOGIST)));
-        System.outprintln(toString(officeManager.returnSpecializedDo(CARDIOLOGIST)));
-        
-        //Should fail/show error message due to pediatrist not being a valid doc type
-        System.out.println(toString(officeManager.returnSpecializedDoc(PEDIATRIST)));
+/****Rachel method tests****
 
-/**** ******************* ****/
+//Cycles through cardiologists in doc list        
+        Doctor cardio1 = manager.returnSpecializedDoc(Specialization.PODIATRIST);
+        Doctor cardio2 = manager.returnSpecializedDoc(Specialization.CARDIOLOGIST);
+        Doctor cardio3 = manager.returnSpecializedDoc(Specialization.CARDIOLOGIST);
+        
+        System.out.println(cardio1.toString());
+        System.out.println(cardio2.toString());
+        System.out.println(cardio3.toString());
+
+
+
+/***************************/
         
         
         //Return True
@@ -67,4 +78,5 @@ public class Main
     
 
     }
+
 }
