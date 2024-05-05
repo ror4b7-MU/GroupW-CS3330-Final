@@ -1,6 +1,7 @@
 package user_views;
 
 import office_manager.OfficeManager;
+import records.Appointment;
 import users.Doctor;
 import users.User;
 
@@ -30,6 +31,25 @@ public class PatientView extends UserView {
 		int randint = rand.nextInt(length);
 
 		return options.get(length);
+	}
 
+	public boolean deleteAppt(Appointment appt) {
+		//need getters and setters for doctor class
+		Doctor doc = appt.getDoctor();
+		doc.getSchedule().remove(appt);
+		appt=null;
+		if(doc.getSchedule().get(appt)==null) {
+			return true;
+		}
+		return false;
+	}
+
+	public boolean rescheduleAppt(Appointment appt) {
+
+		Doctor doc = appt.getDoctor();
+		boolean test = deleteAppt(appt);
+		doc.scheduleAppointment(appt.getPatient(), appt.getStart(), appt.getEnd());
+		
+		return test;
 	}
 }
