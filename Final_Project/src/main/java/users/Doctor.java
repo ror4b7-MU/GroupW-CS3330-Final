@@ -43,7 +43,7 @@ public class Doctor // extends User // need to change the constructor and could 
         allDoctors.add(this); 
     }
 
-
+	
     public String toString()
     {
         return(ID + "\n" + firstName + " "+ lastName + "\n" + getDoctorSpecialization() + "\n");
@@ -354,6 +354,71 @@ public class Doctor // extends User // need to change the constructor and could 
 
 	public void setDoctorSpecialization(Specialization doctorSpecialization) {
 		this.doctorSpecialization = doctorSpecialization;
+	}
+
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+
+	public String getLastName() {
+		return lastName;
+	}
+
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+
+	public ArrayList<Appointment> getSchedule() {
+		return schedule;
+	}
+
+
+	public void setSchedule(ArrayList<Appointment> schedule) {
+		this.schedule = schedule;
+	}
+
+
+	public String getBirthDate() {
+		return birthDate;
+	}
+
+
+	public void setBirthDate(String birthDate) {
+		this.birthDate = birthDate;
+	}
+
+
+	public int getID() {
+		return ID;
+	}
+
+
+	public void setID(int iD) {
+		ID = iD;
+	}
+
+
+	public static void setAllDoctors(List<Doctor> allDoctors) {
+		Doctor.allDoctors = allDoctors;
+	}
+
+
+	public static int getIdCounter() {
+		return idCounter;
+	}
+
+
+	public static void setIdCounter(int idCounter) {
+		Doctor.idCounter = idCounter;
 	}
 
 

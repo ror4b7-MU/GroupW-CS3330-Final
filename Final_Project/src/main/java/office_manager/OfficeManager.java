@@ -326,6 +326,22 @@ public class OfficeManager {
 		return null;
 
 	}
+
+
+	public ArrayList<Appointment> getAppointments() {
+		return appointments;
+	}
+
+	public ArrayList<PatientUser> getPatients() {
+		return patients;
+	}
+
+	public ArrayList<Doctor> getDoctors() {
+		return doctors;
+	}
+
+	
+
     
     
 }
