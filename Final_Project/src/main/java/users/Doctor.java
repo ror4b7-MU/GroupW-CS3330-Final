@@ -7,7 +7,7 @@ import javax.print.Doc;
 import javax.swing.plaf.nimbus.State;
 
 import records.Appointment;
-
+import records.Prescription;
 
 import java.util.ArrayList;
 
@@ -35,7 +35,7 @@ public class Doctor // extends User // need to change the constructor and could 
         this.lastName = lastName;
         this.birthDate = date;
         this.ID = idCounter;
-        this.doctorSpecialization = doctorSpecialization; 
+        this.setDoctorSpecialization(doctorSpecialization); 
         idCounter += 1;  
 
         this.schedule = new ArrayList<Appointment>(); 
@@ -46,7 +46,7 @@ public class Doctor // extends User // need to change the constructor and could 
 
     public String toString()
     {
-        return(ID + "\n" + firstName + " "+ lastName + "\n" + doctorSpecialization + "\n");
+        return(ID + "\n" + firstName + " "+ lastName + "\n" + getDoctorSpecialization() + "\n");
     }
 
     //This method attempts to set up an appointmet.
@@ -72,7 +72,7 @@ public class Doctor // extends User // need to change the constructor and could 
     //This method gets all the refered patients from the docotrs type 
     public List<PatientUser> getReferedPatients()
     {
-        return doctorSpecialization.getReferrals();
+        return getDoctorSpecialization().getReferrals();
     }
 
 
@@ -90,6 +90,252 @@ public class Doctor // extends User // need to change the constructor and could 
             }
         }
     }
+    
+    public boolean assignPatientMedication(PatientUser patient, Prescription medication)
+    {	
+    	switch(medication) {
+	    	case ALBUTEROL: 
+	    		//For loop to return true if the medication is already in the list
+	    		for(Prescription med : patient.getMedList())
+	    		{
+	    			if(med == Prescription.ALBUTEROL) {
+	    				return true;
+	    			}
+	    		}
+	    		//Otherwise return true upon successful addition
+	    		if(patient.addPrescription(Prescription.ALBUTEROL)) {
+	    			return true;
+	    		}
+	    		//else return false
+	    		return false;
+	    		
+	    	case AMOXICILLIN:
+	    		//For loop to return true if the medication is already in the list
+	    		for(Prescription med : patient.getMedList())
+	    		{
+	    			if(med == Prescription.AMOXICILLIN) {
+	    				return true;
+	    			}
+	    		}
+	    		//Otherwise return true upon successful addition
+	    		if(patient.addPrescription(Prescription.AMOXICILLIN)) {
+	    			return true;
+	    		}
+	    		//else return false
+	    		return false;
+	    		
+	    	case ANASTROZOLE:
+	    		//For loop to return true if the medication is already in the list
+	    		for(Prescription med : patient.getMedList())
+	    		{
+	    			if(med == Prescription.ANASTROZOLE) {
+	    				return true;
+	    			}
+	    		}
+	    		//Otherwise return true upon successful addition
+	    		if(patient.addPrescription(Prescription.ANASTROZOLE)) {
+	    			return true;
+	    		}
+	    		//else return false
+	    		return false;
+	    		
+	    	case BACTRIM:
+	    		//For loop to return true if the medication is already in the list
+	    		for(Prescription med : patient.getMedList())
+	    		{
+	    			if(med == Prescription.BACTRIM) {
+	    				return true;
+	    			}
+	    		}
+	    		//Otherwise return true upon successful addition
+	    		if(patient.addPrescription(Prescription.BACTRIM)) {
+	    			return true;
+	    		}
+	    		//else return false
+	    		return false;
+	    		
+	    	case DIGOXIN:
+	    		//For loop to return true if the medication is already in the list
+	    		for(Prescription med : patient.getMedList())
+	    		{
+	    			if(med == Prescription.DIGOXIN) {
+	    				return true;
+	    			}
+	    		}
+	    		//Otherwise return true upon successful addition
+	    		if(patient.addPrescription(Prescription.DIGOXIN)) {
+	    			return true;
+	    		}
+	    		//else return false
+	    		return false;
+	    		
+	    	case DILTIAZEM:
+	    		//For loop to return true if the medication is already in the list
+	    		for(Prescription med : patient.getMedList())
+	    		{
+	    			if(med == Prescription.DILTIAZEM) {
+	    				return true;
+	    			}
+	    		}
+	    		//Otherwise return true upon successful addition
+	    		if(patient.addPrescription(Prescription.DILTIAZEM)) {
+	    			return true;
+	    		}
+	    		//else return false
+	    		return false;
+	    		
+	    	case IBUPROFEN:
+	    		//For loop to return true if the medication is already in the list
+	    		for(Prescription med : patient.getMedList())
+	    		{
+	    			if(med == Prescription.IBUPROFEN) {
+	    				return true;
+	    			}
+	    		}
+	    		//Otherwise return true upon successful addition
+	    		if(patient.addPrescription(Prescription.IBUPROFEN)) {
+	    			return true;
+	    		}
+	    		//else return false
+	    		return false;
+	    		
+	    	case LETROZOLE:
+	    		//For loop to return true if the medication is already in the list
+	    		for(Prescription med : patient.getMedList())
+	    		{
+	    			if(med == Prescription.LETROZOLE) {
+	    				return true;
+	    			}
+	    		}
+	    		//Otherwise return true upon successful addition
+	    		if(patient.addPrescription(Prescription.LETROZOLE)) {
+	    			return true;
+	    		}
+	    		//else return false
+	    		return false;
+	    		
+	    	case MACROBID:
+	    		//For loop to return true if the medication is already in the list
+	    		for(Prescription med : patient.getMedList())
+	    		{
+	    			if(med == Prescription.MACROBID) {
+	    				return true;
+	    			}
+	    		}
+	    		//Otherwise return true upon successful addition
+	    		if(patient.addPrescription(Prescription.MACROBID)) {
+	    			return true;
+	    		}
+	    		//else return false
+	    		return false;
+	    		
+	    	case VERAPAMIL:
+	    		//For loop to return true if the medication is already in the list
+	    		for(Prescription med : patient.getMedList())
+	    		{
+	    			if(med == Prescription.VERAPAMIL) {
+	    				return true;
+	    			}
+	    		}
+	    		//Otherwise return true upon successful addition
+	    		if(patient.addPrescription(Prescription.VERAPAMIL)) {
+	    			return true;
+	    		}
+	    		//else return false
+	    		return false;
+	    		
+	    	default:
+	    		return false;
+    	}   	
+    }
+    
+    public boolean deletePatientMedication(PatientUser patient, Prescription medication)
+    {
+    	switch(medication) {
+    	case ALBUTEROL: 
+    		//return true upon successful removal
+    		if(patient.removePrescription(Prescription.ALBUTEROL)) {
+    			return true;
+    		}
+    		//else return false
+    		return false;
+    		
+    	case AMOXICILLIN:
+    		//return true upon successful removal
+    		if(patient.removePrescription(Prescription.AMOXICILLIN)) {
+    			return true;
+    		}
+    		//else return false
+    		return false;
+    		
+    	case ANASTROZOLE:
+    		//return true upon successful removal
+    		if(patient.removePrescription(Prescription.ANASTROZOLE)) {
+    			return true;
+    		}
+    		//else return false
+    		return false;
+    		
+    	case BACTRIM:
+    		//return true upon successful removal
+    		if(patient.removePrescription(Prescription.BACTRIM)) {
+    			return true;
+    		}
+    		//else return false
+    		return false;
+    		
+    	case DIGOXIN:
+    		//return true upon successful removal
+    		if(patient.removePrescription(Prescription.DIGOXIN)) {
+    			return true;
+    		}
+    		//else return false
+    		return false;
+    		
+    	case DILTIAZEM:
+    		//return true upon successful removal
+    		if(patient.removePrescription(Prescription.DILTIAZEM)) {
+    			return true;
+    		}
+    		//else return false
+    		return false;
+    		
+    	case IBUPROFEN:
+    		//return true upon successful removal
+    		if(patient.removePrescription(Prescription.IBUPROFEN)) {
+    			return true;
+    		}
+    		//else return false
+    		return false;
+    		
+    	case LETROZOLE:
+    		//return true upon successful removal
+    		if(patient.removePrescription(Prescription.LETROZOLE)) {
+    			return true;
+    		}
+    		//else return false
+    		return false;
+    		
+    	case MACROBID:
+    		//return true upon successful removal
+    		if(patient.removePrescription(Prescription.MACROBID)) {
+    			return true;
+    		}
+    		//else return false
+    		return false;
+    		
+    	case VERAPAMIL:
+    		//return true upon successful removal
+    		if(patient.removePrescription(Prescription.VERAPAMIL)) {
+    			return true;
+    		}
+    		//else return false
+    		return false;
+    		
+    	default:
+    		return false;
+	} 
+    }
 
 
     //This gets all of the doctors 
@@ -99,6 +345,16 @@ public class Doctor // extends User // need to change the constructor and could 
     {
         return allDoctors; 
     }
+
+
+	public Specialization getDoctorSpecialization() {
+		return doctorSpecialization;
+	}
+
+
+	public void setDoctorSpecialization(Specialization doctorSpecialization) {
+		this.doctorSpecialization = doctorSpecialization;
+	}
 
 
 }

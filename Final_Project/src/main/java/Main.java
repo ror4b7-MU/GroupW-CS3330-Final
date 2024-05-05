@@ -4,7 +4,9 @@ import java.util.Date;
 
 import javax.print.Doc;
 
+import office_manager.OfficeManager;
 import records.Appointment;
+import records.Prescription;
 import users.Doctor;
 import users.PatientUser;
 import users.Specialization;
@@ -14,10 +16,19 @@ public class Main
 {
 	public static void main(String []args)
     {
-        Doctor doc = new Doctor("Bob", "Joel", "10/10", Specialization.CARDIOLOGIST); 
+		
+		
+		OfficeManager manager = OfficeManager.getInstance();
+		
+        Doctor doc1 = new Doctor("Bob", "Joel", "10/10", Specialization.CARDIOLOGIST); 
         Doctor doc2 = new Doctor("Layla", "Smith", "10/10", Specialization.CARDIOLOGIST);
-        
-    
+/*
+* //adds doctors to singleton doc list 
+* 		if(!(manager.addDoctor(doc))) {
+* 			System.out.println("Failed to add"); }; if(!(manager.addDoctor(doc2))) {
+* 			System.out.println("Failed to add"); 
+* 		}
+*/
         PatientUser pat1 = new PatientUser("Smith", "Name", "10/10", "n.smith"); 
 
         PatientUser pat2 = new PatientUser("Bob", "Sur", "10/10", "s.bob"); 
@@ -28,19 +39,73 @@ public class Main
         Date start2 = new Date(2024, 3, 2, 3, 15); 
         Date end2 = new Date(2024, 3, 2, 3, 40); 
 
+/****Rachel method tests****
 
+/////Return Doc types/////
+
+
+        Cycles through cardiologists in doc list        
+        Doctor cardio1 = manager.returnSpecializedDoc(Specialization.PODIATRIST);
+        Doctor cardio2 = manager.returnSpecializedDoc(Specialization.CARDIOLOGIST);
+        Doctor cardio3 = manager.returnSpecializedDoc(Specialization.CARDIOLOGIST);
+        
+        System.out.println(cardio1.toString());
+        System.out.println(cardio2.toString());
+        System.out.println(cardio3.toString());
         
 
+/////Assign & Delete Patient Medications/////
+        
+        //Empty patient 1 medlist
+        System.out.println(pat1.getMedList());
+      
+        //Doc 1 assigns albuterol to patient 1
+        doc1.assignPatientMedication(pat1, Prescription.ALBUTEROL);
+        
+        //List prints albuterol
+        System.out.println(pat1.getMedList());
+        
+        //Doc 2 assigns ibuprofen to patient 1
+        doc2.assignPatientMedication(pat1, Prescription.IBUPROFEN);
+        
+        
+        //Doc 2 tries to assign iburofen again but it doesn't add a double
+        doc2.assignPatientMedication(pat1, Prescription.IBUPROFEN);
+        
+        
+        //Doc 1 tries to assign iburofen but it doesn't add a double since it's already in the list
+        doc1.assignPatientMedication(pat1, Prescription.IBUPROFEN);
+        
+        //List prints albuterol and ibuprofen
+        System.out.println(pat1.getMedList());
+        
+        //Doc 2 removes albuterol from patient 1
+        doc2.deletePatientMedication(pat1, Prescription.ALBUTEROL);
+        
+        //No issues upon attempt to remove non-existent med
+        doc1.deletePatientMedication(pat1, Prescription.ALBUTEROL);
+        
+        //List prints Ibuprofen
+        System.out.println(pat1.getMedList());
+        
+        //Doc 1 removes ibuprofen from patient 1
+        doc1.deletePatientMedication(pat1, Prescription.IBUPROFEN);
+        
+        //Empty patient1 medlist
+        System.out.println(pat1.getMedList());
 
+****End Rachel method tests****/
+        
+        
         //Return True
-        System.out.println(doc.scheduleAppointment(pat1, start, end));
+/*        System.out.println(doc.scheduleAppointment(pat1, start, end));
 
 
         //Should return False
         System.out.println(doc.scheduleAppointment(pat2, start2, end2));
 
         //Should return True
-        System.out.println(doc2.scheduleAppointment(pat2, start2, end2));
+        System.out.println(doc2.scheduleAppointment(pat2, start2, end2));*/
 
         // Main program will start here by using scanner to ask the user if they are a Doctor or Patient
         // Based on their response a new instance of PatientView or DoctorView will be initialized
@@ -56,4 +121,5 @@ public class Main
     
 
     }
+
 }
