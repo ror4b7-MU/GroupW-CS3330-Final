@@ -80,4 +80,22 @@ public class DoctorView extends UserView{
         return false;
     }
 
+	@Override
+	protected void viewSchedule() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected boolean bookAppointment() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	protected boolean cancelOrReschedulApp() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
