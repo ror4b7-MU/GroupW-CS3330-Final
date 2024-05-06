@@ -4,12 +4,12 @@ import office_manager.OfficeManager;
 import records.Appointment;
 import users.Doctor;
 import users.PatientUser;
-import users.User;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Random;
-import java.util.Scanner;
+//import users.User;
+//
+//import java.util.ArrayList;
+//import java.util.Date;
+//import java.util.Random;
+//import java.util.Scanner;
 import java.util.Calendar;
 
 public class PatientView extends UserView {

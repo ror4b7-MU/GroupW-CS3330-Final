@@ -127,7 +127,7 @@ public class UserInput {
     //This method checks to make sure a user is a doctor
     private static boolean checkValidDoctor(User user) {
     try {
-        Doctor doctor = (Doctor) user; 
+        // Doctor doctor = (Doctor) user; 
         return true; 
     } catch (ClassCastException e) {
         return false;

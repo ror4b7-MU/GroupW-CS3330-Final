@@ -1,7 +1,7 @@
 package records; 
 
 import java.util.Date;
-import java.util.List;
+//import java.util.List;
 
 import users.Doctor;
 import users.PatientUser;
@@ -25,7 +25,8 @@ public class Appointment
     public String toString() {
         Calendar cal = Calendar.getInstance();
         cal.setTime(start);
-        int year = cal.get(Calendar.YEAR); 
+        @SuppressWarnings("unused")
+		int year = cal.get(Calendar.YEAR); 
         int day = cal.get(Calendar.DAY_OF_MONTH);
         int startHour = cal.get(Calendar.HOUR_OF_DAY);
         int startMinute = cal.get(Calendar.MINUTE);

@@ -1,15 +1,11 @@
 package users;
 
-import java.util.Date;
+
 import java.util.List;
 
-import javax.print.Doc;
-import javax.swing.plaf.nimbus.State;
-
-import records.Appointment;
 import records.Prescription;
 
-import java.util.ArrayList;
+
 
 public class Doctor extends User // need to change the constructor and could get rid of the firstName and LastName fields and ID
 {

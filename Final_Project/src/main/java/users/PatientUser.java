@@ -1,7 +1,6 @@
 package users;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import records.Appointment;
 import records.Prescription;
