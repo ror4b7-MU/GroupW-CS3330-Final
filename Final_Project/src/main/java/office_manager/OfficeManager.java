@@ -433,6 +433,25 @@ public class OfficeManager {
 		return true;
 	}
 
+	// this function deletes the appointment, checks to ensure it is deleted, and then goes to
+	// reschedule the appointment with the same parameters, with the exception of the new start-
+	// and end-times.
+	public boolean rescheduleAppt(Appointment appt, Date newStart, Date newEnd) {
+
+		boolean test = deleteAppt(appt); //deleting the appt
+		Appointment newAppt = new Appointment(appt.getPatient, appt.getDoctor, appt.getReason, appt.getConclusion, newStart, newEnd);
+		appointments.add(newAppt);//rescheduling
+		
+		boolean fixTest = false;
+		for(Appointment apptItem : appointments) {
+			if(apptItem==newAppt) {
+				fixTest = true;
+			}
+		}
+		boolean compTest = test && fixTest;
+		return compTest; //checking that the initial appt was deleted and newAppt was implemented
+	}
+
 	public ArrayList<Appointment> getAppointments() {
 		return appointments;
 	}
