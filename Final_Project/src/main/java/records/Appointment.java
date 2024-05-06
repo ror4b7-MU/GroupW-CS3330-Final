@@ -34,9 +34,7 @@ public class Appointment
         int endHour = cal.get(Calendar.HOUR_OF_DAY);
         int endMinute = cal.get(Calendar.MINUTE);
         
-
-        
-        return ("Appointment" +
+        System.out.println(("Appointment" +
                 "\n DATE=" + 
                 day + 
                 "\n START TIME" + 
@@ -44,7 +42,18 @@ public class Appointment
                 "\n END TIME" 
                 + 
                 endHour + endMinute +
-                "\n Appt Num"
+                "\n ApptID "
+                + this.AppointmentId + "\n"));
+        
+        return ("Appointment" +
+                "\n DATE=" + 
+                day + 
+                "\n START TIME: " + 
+                startHour + startMinute +
+                "\n END TIME: " 
+                + 
+                endHour + endMinute +
+                "\n ApptID "
                 + this.AppointmentId);
 
 

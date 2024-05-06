@@ -70,7 +70,7 @@ public class PatientView extends UserView {
 		    	this.bookAppointment();
 		        break;
 		    case 3:
-		    	// this.cancelOrReschedulApp();
+		    	this.cancelOrReschedulApp();
 		    	break;
 		    case 4:
 		    	this.logout();
@@ -87,7 +87,7 @@ public class PatientView extends UserView {
 		OfficeManager instance = this.getOfficeManager();
 		int apptNo = 0;
 		for(Appointment appt : instance.getAppointments()) {
-			if(appt.getPatient()==user) {
+			if(appt.getPatient().equals(user)) {
 				apptNo+=1;
 				System.out.println("\nAppointment " + apptNo + ":");
 				appt.toString();
