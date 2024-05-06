@@ -6,6 +6,8 @@ import java.util.List;
 // import java.util.Observable;
 import java.util.Random;
 
+import Final_Project.src.main.java.user_views.Appointment;
+import Final_Project.src.main.java.user_views.Doctor;
 import records.*;
 import users.*;
 
@@ -416,6 +418,20 @@ public class OfficeManager {
         return false;
     }
 
+	
+	// this function removes the appointment from the manager's appointment list. It returns false if the
+	// appointment is still in the list, and true if it has been successfully removed.
+	public boolean deleteAppt(Appointment appt) {
+		
+		appointments.remove(appt);
+		
+		for(Appointment apptItem : appointments) { //checking that appt no longer exists
+			if(apptItem==appt) {
+				return false;
+			}
+		}
+		return true;
+	}
 
 	public ArrayList<Appointment> getAppointments() {
 		return appointments;
