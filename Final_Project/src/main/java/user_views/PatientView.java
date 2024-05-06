@@ -85,9 +85,10 @@ public class PatientView extends UserView {
 
 
 	private boolean alterDoctor() {
-		// TODO
-		// use officeManager's changeDoctor function
-		return false;
+		Doctor doc = UserInput.getValidDoctor("Please enter the new doctor you want", getOfficeManager());
+		PatientUser pat = (PatientUser) getUser(); 
+		pat.setGCP(doc);
+		return true; 
 	}
 
 	@Override
