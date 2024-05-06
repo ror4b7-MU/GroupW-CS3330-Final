@@ -87,7 +87,7 @@ public class PatientView extends UserView {
 
 
 	private boolean alterDoctor() {
-		Doctor doc = UserInput.getValidDoctor("Please enter the new doctor you want", getOfficeManager());
+		Doctor doc = UserInput.getValidDoctor("Please enter the new doctor you want (username)", getOfficeManager());
 		PatientUser pat = (PatientUser) getUser(); 
 		pat.setGCP(doc);
 		return true; 
@@ -117,7 +117,7 @@ public class PatientView extends UserView {
 		PatientUser pat = (PatientUser) this.getUser(); 
 		Calendar start = UserInput.getValidDate("Enter Start: YYYYY-MM-DD-HH-mm of requested appointment"); 
 		Calendar end  = UserInput.getValidDate("Enter End: YYYY-MM-DD-HH-mm of requested appointment");
-		Doctor doc = (Doctor) UserInput.getValidUser("Please enter your doctor", getOfficeManager()); 
+		Doctor doc = (Doctor) UserInput.getValidUser("Please enter your doctor(username)", getOfficeManager()); 
 		String reason = UserInput.getString("Enter your reason for the visit"); 
 
 
