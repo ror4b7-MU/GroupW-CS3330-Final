@@ -85,6 +85,22 @@ public class OfficeManager {
 		System.out.println("patients size: " + this.patients.size());
 		return true;
 	}
+
+	public boolean addNewDocotr(String username, String name, String surname, String birthDate, Specialization spec)
+	{
+		for (Doctor doc : doctors) {
+			if (doc.getUserName().equals(username))
+			{
+				return false;
+			}
+		}
+
+		Doctor newDoc = new Doctor(name, surname, birthDate, username, spec);
+
+		doctors.add(newDoc); 
+
+		return true; 
+	}
 	
     public Boolean scheduleAppointment(PatientUser patient, Doctor doctor, Date start , Date end, String reason)
     {
