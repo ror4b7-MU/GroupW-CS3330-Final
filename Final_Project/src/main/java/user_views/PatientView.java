@@ -100,31 +100,33 @@ public class PatientView extends UserView {
 
 	@Override
 	protected boolean bookAppointment() {
-		OfficeManager instance = this.getOfficeManager();
-		Scanner bookScanner = new Scanner(System.in);
-		System.out.println("Alright! Let's book your appointment.\n");
+		// problem area, keeps looping with NoSuchElementException
+		// OfficeManager instance = this.getOfficeManager();
+		// Scanner bookScanner = new Scanner(System.in);
+		// System.out.println("Alright! Let's book your appointment.\n");
 
-		System.out.println("Please enter your preferred month for your appointment: ");
-		int month = Integer.parseInt(bookScanner.nextLine());
-		System.out.println("Please enter your preferred day for your appointment: ");
-		int day = Integer.parseInt(bookScanner.nextLine());
-		System.out.println("Please enter your preferred starting hour for your appointment (9 (9 AM) through 17 (5 PM)): ");
-		int startHour = Integer.parseInt(bookScanner.nextLine());
-		System.out.println("Please enter your preferred ending hour for your appointment (9 (9 AM) through 17 (5 PM)): ");
-		int endHour = Integer.parseInt(bookScanner.nextLine());
+		// System.out.println("Please enter your preferred month for your appointment: ");
+		// int month = Integer.parseInt(bookScanner.nextLine());
+		// System.out.println("Please enter your preferred day for your appointment: ");
+		// int day = Integer.parseInt(bookScanner.nextLine());
+		// System.out.println("Please enter your preferred starting hour for your appointment (9 (9 AM) through 17 (5 PM)): ");
+		// int startHour = Integer.parseInt(bookScanner.nextLine());
+		// System.out.println("Please enter your preferred ending hour for your appointment (9 (9 AM) through 17 (5 PM)): ");
+		// int endHour = Integer.parseInt(bookScanner.nextLine());
 
-		Date startDate = new Date(2024, month, day, startHour, 0);
-		Date endDate = new Date(2024, month, day, endHour, 0);
+		// Date startDate = new Date(2024, month, day, startHour, 0);
+		// Date endDate = new Date(2024, month, day, endHour, 0);
 
-		System.out.println("What is your reason for this appointment? ");
-		String reason = bookScanner.nextLine();
+		// System.out.println("What is your reason for this appointment? ");
+		// String reason = bookScanner.nextLine();
 
-		boolean implementation = instance.scheduleAppointment((PatientUser)user, ((PatientUser) user).getGCP(), startDate, endDate, reason);
-		bookScanner.close();
-		if(implementation == true) {
-			System.out.println("Appt booked!\n");
-		}
-		return implementation;
+		// boolean implementation = instance.scheduleAppointment((PatientUser)user, ((PatientUser) user).getGCP(), startDate, endDate, reason);
+		// bookScanner.close();
+		// if(implementation == true) {
+		// 	System.out.println("Appt booked!\n");
+		// }
+		// return implementation;
+		return false;
 	}
 
 	@Override
