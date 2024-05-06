@@ -29,11 +29,6 @@ public class OfficeManager {
 	private PatientUser p2 = new PatientUser("April", "O'Neil", "12-01-2003", "40n3il");
 	private PatientUser p3 = new PatientUser("Sharpay", "Evans", "03-28-2002", "pink4lyfe", d1);
 	private PatientUser p4 = new PatientUser("Troy", "Bolton", "02-14-2002", "betonit");
-    // was thinking again and i guess we could just have an ArrayList of Users?
-    // instead of doctors and patients
-    // need to make it so that Doctor class extends User
-    // private ArrayList<User> Users; ???
-    // would simplify some of the following code
     
     //To track last index of each type of doctor returned via returnSpecializedDoctor
     private int lastGCPIndex;

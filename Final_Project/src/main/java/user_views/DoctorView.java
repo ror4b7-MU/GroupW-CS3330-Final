@@ -63,17 +63,18 @@ public class DoctorView extends UserView{
 		try {
 			OfficeManager manager = this.getOfficeManager();
 			System.out.print("Please specify the username of the patient you wish to refer: ");
-			String userName = this.scanner.nextLine();
+			scanner.nextLine();
+			String userName = scanner.nextLine();
 			PatientUser patientToRefer = (PatientUser) manager.getUserByUserName(userName);
 			if(patientToRefer == null) {
 				System.out.println("User not found!");
 				return false;
 			}
-			System.out.println("Please specify the specialization you wish to refer to by entering the corresponding number: ");
 			System.out.println("1: for General Care");
 			System.out.println("2: for Cardiologist");
 			System.out.println("3: for Podiatrist");
 			System.out.println("4: for Oncologist");
+			System.out.print("Please specify the specialization you wish to refer to by entering the corresponding number: ");
 			int specializationNum = scanner.nextInt();
 			Specialization spec = null;
 			switch (specializationNum) {
@@ -110,20 +111,24 @@ public class DoctorView extends UserView{
 	// scans for user input and then calls the appropriate officeManager function
 	private boolean assignOrRemovePatientMed() {
 		System.out.print("Type A to assign a new medication and R to remove: ");
-		String AOrR = this.scanner.nextLine();
+		String AOrR = scanner.next();
 		OfficeManager manager = this.getOfficeManager();
-		String userName = UserInput.getString("Please enter the userName of the patient: ");
 		if(AOrR.equalsIgnoreCase("A")) {
+			scanner.nextLine(); 
+			System.out.print("Please enter the username of the patient: ");
+			String userName = scanner.nextLine();
 			System.out.print("Please enter the medication to assign: ");
-			Prescription p = Prescription.valueOf(this.scanner.nextLine());
+			Prescription p = Prescription.valueOf(scanner.nextLine().toUpperCase());
 			if(manager.assignPatientMedication(userName, p)) {
 				System.out.println("Medication Assigned!");
 				return true;
 			}
 		}
 		else if (AOrR.equalsIgnoreCase("R")) {
+			scanner.nextLine(); 
+			String userName = UserInput.getString("Please enter the userName of the patient");
 			System.out.print("Please enter the medication to remove: ");
-			Prescription p = Prescription.valueOf(this.scanner.nextLine());
+			Prescription p = Prescription.valueOf(scanner.nextLine().toUpperCase());
 			if(manager.removePatientMedication(userName, p)) {
 				System.out.println("Medication Removed!");
 				return true;
