@@ -71,7 +71,7 @@ public class PatientView extends UserView {
 		    	this.bookAppointment();
 		        break;
 		    case 3:
-		    	// this.cancelOrReschedulApp();
+		    	this.cancelOrReschedulApp();
 		    	break;
 		    case 4:
 		    	this.alterDoctor();
