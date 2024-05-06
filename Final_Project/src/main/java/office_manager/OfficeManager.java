@@ -6,10 +6,6 @@ import java.util.List;
 // import java.util.Observable;
 import java.util.Random;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 439becf952acb7ec689a62ee56421c3d6fbece24
 import records.*;
 import users.*;
 
@@ -466,6 +462,17 @@ public class OfficeManager {
 		}
 		System.out.println("Prescription not found!");
 		return false;
+	}
+	
+	// function to return an appointment by id
+	public Appointment getApptByID(int id) {
+		for(Appointment appt : this.getAppointments()) {
+			if(appt.getAppointmentId() == id) {
+				return appt;
+			}
+		}
+		System.out.println("Appointment not found");
+		return null;
 	}
 
 	

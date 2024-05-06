@@ -1,6 +1,8 @@
 package user_views;
+import java.util.Calendar;
 import java.util.Scanner;
 import office_manager.OfficeManager;
+import records.Appointment;
 import users.User;
 
 public abstract class UserView {
@@ -130,7 +132,45 @@ public abstract class UserView {
     
     protected abstract boolean bookAppointment();
     
-    protected abstract boolean cancelOrReschedulApp();
+	protected boolean cancelOrReschedulApp() {
+		String CorR = UserInput.getString("Enter C to cancel an appointment and R to reschedule: ");
+		if(CorR.equals("C")) {
+			int apptNum = UserInput.getValidInt("Enter the appointment number: ");
+			Appointment appt = this.getOfficeManager().getApptByID(apptNum);
+			if(appt == null) {
+				return false;
+			}
+			if(this.getOfficeManager().deleteAppt(appt)) {
+				return true;
+			}
+			else {
+				System.out.println("Error canceling appointment");
+				return false;
+			}
+		}
+		else if (CorR.equals("R")) {
+			int apptNum = UserInput.getValidInt("Enter the appointment number: ");
+			Calendar calStart = UserInput.getValidDate("Enter the start time (YYYY-MM-DD-HH-mm): ");
+			Calendar calEnd = UserInput.getValidDate("Enter the end time (YYYY-MM-DD-HH-mm): ");
+			Appointment appt = this.getOfficeManager().getApptByID(apptNum);
+			if(appt == null) {
+				return false;
+			}
+			if(this.getOfficeManager().rescheduleAppt(appt, calStart.getTime(), calEnd.getTime())) {
+				return true;
+			}
+			else {
+				System.out.println("Error rescheduling appointment");
+				return false;
+			}
+		}
+		else {
+			System.out.println("Invalid Input");
+			return false;
+		}
+	}
+
+
     
     // logs the user out
     // its nothing fancy just sets the user to null and the loggedIn status to false

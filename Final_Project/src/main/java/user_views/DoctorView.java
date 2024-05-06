@@ -1,6 +1,9 @@
 package user_views;
 
+import java.util.Calendar;
+
 import office_manager.OfficeManager;
+import records.Appointment;
 import records.Prescription;
 import users.Doctor;
 // import users.Doctor;
@@ -130,7 +133,7 @@ public class DoctorView extends UserView{
 			System.out.println("Invalid Input");
 			return false;
 		}
-		System.out.println("Error occured while tryin to assign or remove Med!");
+		System.out.println("Error occured while trying to assign or remove Med!");
 		return false;
 		
 	}
@@ -149,10 +152,7 @@ public class DoctorView extends UserView{
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-	@Override
-	protected boolean cancelOrReschedulApp() {
-		return false;
-	}
-
+	
 }
+
+

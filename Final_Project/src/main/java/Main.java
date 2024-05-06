@@ -128,6 +128,9 @@ public class Main
 		
 		// Im thinking this could maybe run in a loop that always loops back to the displayOptions part, 
 		// one of the options could be to logout. 
+		OfficeManager manager = OfficeManager.getInstance();
+		Doctor doc = new Doctor("Justice", "Mitchell", "05052003", "justi", Specialization.CARDIOLOGIST);
+		manager.addDoctor(doc);
 		
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("Indicate (D) for doctor login or (P) for patient: ");

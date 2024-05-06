@@ -43,7 +43,9 @@ public class Appointment
                 startHour + startMinute +
                 "\n END TIME" 
                 + 
-                endHour + endMinute);
+                endHour + endMinute +
+                "\n Appt Num"
+                + this.AppointmentId);
 
 
     }
