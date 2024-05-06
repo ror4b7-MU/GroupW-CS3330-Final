@@ -6,7 +6,10 @@ import java.util.List;
 // import java.util.Observable;
 import java.util.Random;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 439becf952acb7ec689a62ee56421c3d6fbece24
 import records.*;
 import users.*;
 
@@ -486,7 +489,9 @@ public class OfficeManager {
 	public boolean rescheduleAppt(Appointment appt, Date newStart, Date newEnd) {
 
 		boolean test = deleteAppt(appt); //deleting the appt
+
 		Appointment newAppt = new Appointment(appt.getPatient(), appt.getDoctor(), appt.getReason(), appt.getConclusion(), newStart, newEnd);
+
 		appointments.add(newAppt);//rescheduling
 		
 		boolean fixTest = false;
