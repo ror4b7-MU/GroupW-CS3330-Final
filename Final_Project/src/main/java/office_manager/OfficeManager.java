@@ -6,6 +6,8 @@ import java.util.List;
 // import java.util.Observable;
 import java.util.Random;
 
+import Final_Project.src.main.java.user_views.Appointment;
+import Final_Project.src.main.java.user_views.Doctor;
 import records.*;
 import users.*;
 
@@ -82,6 +84,22 @@ public class OfficeManager {
 		this.getPatients().add(newUser);
 		System.out.println("patients size: " + this.patients.size());
 		return true;
+	}
+
+	public boolean addNewDocotr(String username, String name, String surname, String birthDate, Specialization spec)
+	{
+		for (Doctor doc : doctors) {
+			if (doc.getUserName().equals(username))
+			{
+				return false;
+			}
+		}
+
+		Doctor newDoc = new Doctor(name, surname, birthDate, username, spec);
+
+		doctors.add(newDoc); 
+
+		return true; 
 	}
 	
     public Boolean scheduleAppointment(PatientUser patient, Doctor doctor, Date start , Date end, String reason)
@@ -448,6 +466,39 @@ public class OfficeManager {
 		return false;
 	}
 
+	
+	// this function removes the appointment from the manager's appointment list. It returns false if the
+	// appointment is still in the list, and true if it has been successfully removed.
+	public boolean deleteAppt(Appointment appt) {
+		
+		appointments.remove(appt);
+		
+		for(Appointment apptItem : appointments) { //checking that appt no longer exists
+			if(apptItem==appt) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	// this function deletes the appointment, checks to ensure it is deleted, and then goes to
+	// reschedule the appointment with the same parameters, with the exception of the new start-
+	// and end-times.
+	public boolean rescheduleAppt(Appointment appt, Date newStart, Date newEnd) {
+
+		boolean test = deleteAppt(appt); //deleting the appt
+		Appointment newAppt = new Appointment(appt.getPatient, appt.getDoctor, appt.getReason, appt.getConclusion, newStart, newEnd);
+		appointments.add(newAppt);//rescheduling
+		
+		boolean fixTest = false;
+		for(Appointment apptItem : appointments) {
+			if(apptItem==newAppt) {
+				fixTest = true;
+			}
+		}
+		boolean compTest = test && fixTest;
+		return compTest; //checking that the initial appt was deleted and newAppt was implemented
+	}
 
 	public ArrayList<Appointment> getAppointments() {
 		return appointments;

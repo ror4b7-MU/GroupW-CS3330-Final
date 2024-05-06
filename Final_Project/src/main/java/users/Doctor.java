@@ -36,17 +36,9 @@ public class Doctor extends User // need to change the constructor and could get
     //This creates a doctor account, which is then stored in the allDoctors array
     public Doctor(String name, String surname, String birthdate, String userName, Specialization doctorSpecialization)
     {
-//        this.firstName = firstName; 
-//        this.lastName = lastName;
     	super(name, surname, birthdate, userName);
-//        this.birthDate = date;
-        //this.ID = idCounter;
         this.doctorSpecialization = doctorSpecialization; 
-//        idCounter += 1;  
-//
-//        this.schedule = new ArrayList<Appointment>(); 
-//
-//        allDoctors.add(this); 
+
     }
 
 
