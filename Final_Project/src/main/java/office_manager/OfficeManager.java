@@ -6,8 +6,6 @@ import java.util.List;
 // import java.util.Observable;
 import java.util.Random;
 
-import Final_Project.src.main.java.user_views.Appointment;
-import Final_Project.src.main.java.user_views.Doctor;
 import records.*;
 import users.*;
 
