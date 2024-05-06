@@ -234,7 +234,7 @@ public class OfficeManager {
 
 	}
     
-	//Returns the next podiatrist listed in the arraylist, then starts over from the beginning when it reaches the end
+	//Returns the next podiatrist listed in the arrayList, then starts over from the beginning when it reaches the end
     public Doctor returnPodiatrist() {
 		try {
 			
@@ -415,6 +415,38 @@ public class OfficeManager {
 		// in case of failure
         return false;
     }
+	
+	// function to assign a prescription to a patients medlist
+	public boolean assignPatientMedication(String patientUserName, Prescription p) {
+		PatientUser patient = (PatientUser) this.getUserByUserName(patientUserName); 
+		if(patient == null) {
+			System.out.println("Patient not found!");
+			return false;
+		}
+		else {
+			patient.getMedList().add(p);
+			return true;
+		}
+	}
+	
+	//function to remove a prescription from a patients medlist
+	public boolean removePatientMedication(String patientUserName, Prescription p) {
+		PatientUser patient = (PatientUser) this.getUserByUserName(patientUserName); 
+		if(patient == null) {
+			System.out.println("Patient not found!");
+			return false;
+		}
+		else {
+			for(Prescription P : patient.getMedList()) {
+				if(P.equals(p)) {
+					patient.getMedList().remove(P);
+					return true;
+				}
+			}
+		}
+		System.out.println("Prescription not found!");
+		return false;
+	}
 
 
 	public ArrayList<Appointment> getAppointments() {

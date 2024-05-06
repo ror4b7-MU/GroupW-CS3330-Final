@@ -46,6 +46,7 @@ public class PatientView extends UserView {
 		// displays the patients options, could be more if we need more
 		@Override
 		protected void displayOptions() {
+			System.out.print('\n');
 			System.out.println("Welcome! What would you like to do today?");
 			System.out.println("Enter 1 to view your upcoming schedule");
 			System.out.println("Enter 2 to book a new appointement");

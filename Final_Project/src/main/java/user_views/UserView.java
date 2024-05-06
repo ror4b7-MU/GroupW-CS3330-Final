@@ -8,7 +8,7 @@ public abstract class UserView {
 	// user object will be assigned by login() I'm thinking?
 	protected User user; // this could also be userName not sure which would be easier
 	protected boolean loggedIn = false; // logged in status. Set to true on successful login. Set to false when the user logs out
-	protected Scanner scanner;
+	protected Scanner scanner; // i found that having this single instance of scanner was preventing some errors when closing the scanner
 	
 	public UserView() {
 		scanner = new Scanner(System.in);

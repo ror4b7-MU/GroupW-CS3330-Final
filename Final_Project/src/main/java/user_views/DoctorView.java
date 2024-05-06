@@ -5,6 +5,7 @@ import java.util.List;
 //import java.util.Random;
 
 import office_manager.OfficeManager;
+import users.Doctor;
 // import users.Doctor;
 import users.PatientUser;
 import users.Specialization;
@@ -22,6 +23,7 @@ public class DoctorView extends UserView{
 	// the point of the function is just to display to the user (doctor in this case) the tasks they can perform
 	@Override
 	protected void displayOptions() {
+		System.out.print('\n');
 		System.out.println("Welcome! What would you like to do today?");
 		System.out.println("Enter 1 to view your upcoming schedule");
 		System.out.println("Enter 2 to refer a patient to another department");
@@ -41,7 +43,7 @@ public class DoctorView extends UserView{
 	    	this.viewSchedule();
 	        break;
 	    case 2:
-	    	this.bookAppointment();
+	    	this.referAPatient();
 	        break;
 	    case 3:
 		   	this.cancelOrReschedulApp();
@@ -57,19 +59,66 @@ public class DoctorView extends UserView{
 		return true;
 	}
 		 
-		// scans for user input and then calls the appropriate officeManager function
+	private boolean referAPatient() {
+		try {
+			OfficeManager manager = this.getOfficeManager();
+			System.out.print("Please specify the username of the patient you wish to refer: ");
+			String userName = this.scanner.nextLine();
+			PatientUser patientToRefer = (PatientUser) manager.getUserByUserName(userName);
+			if(patientToRefer == null) {
+				System.out.println("User not found!");
+				return false;
+			}
+			System.out.println("Please specify the specialization you wish to refer to by entering the corresponding number: ");
+			System.out.println("1: for General Care");
+			System.out.println("2: for Cardiologist");
+			System.out.println("3: for Podiatrist");
+			System.out.println("4: for Oncologist");
+			int specializationNum = scanner.nextInt();
+			Specialization spec = null;
+			switch (specializationNum) {
+			    case 1:
+			    	spec = Specialization.GENERAL_CARE_PRACTITIONER;
+			        break;
+			    case 2:
+			    	spec = Specialization.CARDIOLOGIST;
+			        break;
+			    case 3:
+			    	spec = Specialization.PODIATRIST;
+				   	break;
+				case 4:
+					spec = Specialization.ONCOLOGIST;
+				    break;
+				default:
+				  	return false;
+			}
+			if (manager.referPatient(patientToRefer, spec)) {
+				System.out.println("Patient refered successfully");
+				return true;
+			}
+			else {
+				return false;
+			}
+		} 
+		catch (Exception e) {
+        System.out.println("An error occurred: " + e.getMessage());
+        return false;
+		}
+    
+	}
+
+	// scans for user input and then calls the appropriate officeManager function
 	private boolean assignOrRemovePatientMed() {
 		return false;
 	}
 	
-	public DoctorView() {
-		//need constructor, but need userview constructor first
-	}
-
+	// this function first displays the users appointments for today and then the rest of there upcoming appointments
 	@Override
 	protected void viewSchedule() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("Todays Appointments");
+		this.getOfficeManager().viewTodaysSchedule((Doctor) this.getUser()); // display todays appointments
+		System.out.println("All upcoming Appointments");
+		this.getOfficeManager().viewUserAppointments(this.getUser()); // display all appointments
 	}
 
 	@Override
@@ -80,7 +129,6 @@ public class DoctorView extends UserView{
 
 	@Override
 	protected boolean cancelOrReschedulApp() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
