@@ -148,11 +148,11 @@ public class DoctorView extends UserView{
 	protected void viewSchedule() {
 		OfficeManager instance = this.getOfficeManager();
 		int apptNo = 0;
-//		for(Appointment appt : instance.getAppointments()) {
-//			if(appt.getDoctor()==(Doctor)user) {
-//				apptNo+=1;
-//			}
-//		}
+		for(Appointment appt : instance.getAppointments()) {
+			if(appt.getDoctor()==(Doctor)user) {
+				apptNo+=1;
+			}
+		}
 		System.out.println("\nYou have " + apptNo + " appointment(s).\n");
 		instance.viewDoctorAppointments((Doctor)user);
 
