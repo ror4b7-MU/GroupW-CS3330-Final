@@ -9,8 +9,10 @@ public abstract class UserView {
 	protected User user; // this could also be userName not sure which would be easier
 	protected boolean loggedIn = false; // logged in status. Set to true on successful login. Set to false when the user logs out
 	protected Scanner scanner; // i found that having this single instance of scanner was preventing some errors when closing the scanner
+	protected UserInput userinput;
 	
 	public UserView() {
+		this.userinput = new UserInput();
 		scanner = new Scanner(System.in);
 	}
 	

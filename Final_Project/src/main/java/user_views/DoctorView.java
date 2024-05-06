@@ -1,10 +1,7 @@
 package user_views;
 
-//import java.util.ArrayList;
-import java.util.List;
-//import java.util.Random;
-
 import office_manager.OfficeManager;
+import records.Prescription;
 import users.Doctor;
 // import users.Doctor;
 import users.PatientUser;
@@ -109,7 +106,33 @@ public class DoctorView extends UserView{
 
 	// scans for user input and then calls the appropriate officeManager function
 	private boolean assignOrRemovePatientMed() {
+		System.out.print("Type A to assign a new medication and R to remove: ");
+		String AOrR = this.scanner.nextLine();
+		OfficeManager manager = this.getOfficeManager();
+		String userName = UserInput.getString("Please enter the userName of the patient: ");
+		if(AOrR.equalsIgnoreCase("A")) {
+			System.out.print("Please enter the medication to assign: ");
+			Prescription p = Prescription.valueOf(this.scanner.nextLine());
+			if(manager.assignPatientMedication(userName, p)) {
+				System.out.println("Medication Assigned!");
+				return true;
+			}
+		}
+		else if (AOrR.equalsIgnoreCase("R")) {
+			System.out.print("Please enter the medication to remove: ");
+			Prescription p = Prescription.valueOf(this.scanner.nextLine());
+			if(manager.removePatientMedication(userName, p)) {
+				System.out.println("Medication Removed!");
+				return true;
+			}
+		}
+		else {
+			System.out.println("Invalid Input");
+			return false;
+		}
+		System.out.println("Error occured while tryin to assign or remove Med!");
 		return false;
+		
 	}
 	
 	// this function first displays the users appointments for today and then the rest of there upcoming appointments

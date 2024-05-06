@@ -17,7 +17,7 @@ public enum Specialization {
     private List<PatientUser> referrals;
 
 
-    //This gives each department a seperate array of refered patients
+    //This gives each department a seperate array of reffered patients
     Specialization() {
         this.referrals = new ArrayList<>();
     }
