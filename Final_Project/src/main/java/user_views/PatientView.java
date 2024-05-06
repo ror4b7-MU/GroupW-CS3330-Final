@@ -89,12 +89,12 @@ public class PatientView extends UserView {
 		for(Appointment appt : instance.getAppointments()) {
 			if(appt.getPatient()==user) {
 				apptNo+=1;
-				System.out.println("Appointment 1:");
+				System.out.println("\nAppointment " + apptNo + ":");
 				appt.toString();
 			}
 		}
 		if(apptNo==0) {
-			System.out.println("Sorry, but we have no appointments on file for you at this time.");
+			System.out.println("\nSorry, but we have no appointments on file for you at this time.");
 		}
 
 		
