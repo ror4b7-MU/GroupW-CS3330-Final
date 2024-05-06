@@ -55,7 +55,8 @@ public class PatientView extends UserView {
 			System.out.println("Enter 1 to view your schedule");
 			System.out.println("Enter 2 to book an appointment");
 			System.out.println("Enter 3 to cancel or reschedule an existing appointment");
-			System.out.println("Enter 4 to logout");
+			System.out.println("Enter 4 change your assigned doctor");
+			System.out.println("Enter 5 to logout");
 		}
 
 		// executes the option that the user selects. again the userView functions that will be called 
@@ -73,7 +74,9 @@ public class PatientView extends UserView {
 		    	// this.cancelOrReschedulApp();
 		    	break;
 		    case 4:
-		    	this.logout();
+		    	this.alterDoctor();
+			case 5:
+				this.logout();
 		    default:
 		    	return false;
 			}
@@ -81,6 +84,11 @@ public class PatientView extends UserView {
 		}
 
 
+	private boolean alterDoctor() {
+		// TODO
+		// use officeManager's changeDoctor function
+		return false;
+	}
 
 	@Override
 	protected void viewSchedule() {
