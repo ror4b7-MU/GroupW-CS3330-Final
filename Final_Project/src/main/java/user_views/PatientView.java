@@ -46,6 +46,7 @@ public class PatientView extends UserView {
 		// displays the patients options, could be more if we need more
 		@Override
 		protected void displayOptions() {
+			System.out.print('\n');
 			System.out.println("Welcome! What would you like to do today?");
 			System.out.println("Enter 1 to book a new appointment");
 			System.out.println("Enter 2 to cancel an existing appointment");
@@ -75,30 +76,22 @@ public class PatientView extends UserView {
 			return true;
 		}
 
-	
 
-	// this function makes the appointment NULL, and removes it from the corresponding doctor's schedule
-	public boolean deleteAppt(Appointment appt) {
-	
-		Doctor doc = appt.getDoctor(); // finding the appt's assigned doctor
-		doc.getSchedule().remove(appt); //removing appt from schedule
-		appt=null;
-	
-		for(Appointment apptItem : doc.getSchedule()) { //checking that appt no longer exists
-			if(apptItem==appt) {
-				return false;
-			}
-		}
-		return true;
+	@Override
+	protected void viewSchedule() {
+		// TODO Auto-generated method stub
+		
 	}
 
-	// this function deletes the appointment, checks to ensure it is deleted, and then goes to reschedule the appointment with the same parameters
-	public boolean rescheduleAppt(Appointment appt) {
+	@Override
+	protected boolean bookAppointment() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
-		Doctor doc = appt.getDoctor();
-		boolean test = deleteAppt(appt); //deleting the appt
-		doc.scheduleAppointment(appt.getPatient(), appt.getStart(), appt.getEnd()); //rescheduling
-		
-		return test; //checking that the initial appt was deleted
+	@Override
+	protected boolean cancelOrReschedulApp() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

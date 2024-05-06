@@ -1,12 +1,13 @@
 package office_manager;
 
 import java.util.ArrayList;
-
 import java.util.Date;
-
+import java.util.List;
 // import java.util.Observable;
 import java.util.Random;
 
+import Final_Project.src.main.java.user_views.Appointment;
+import Final_Project.src.main.java.user_views.Doctor;
 import records.*;
 import users.*;
 
@@ -84,6 +85,22 @@ public class OfficeManager {
 		System.out.println("patients size: " + this.patients.size());
 		return true;
 	}
+
+	public boolean addNewDocotr(String username, String name, String surname, String birthDate, Specialization spec)
+	{
+		for (Doctor doc : doctors) {
+			if (doc.getUserName().equals(username))
+			{
+				return false;
+			}
+		}
+
+		Doctor newDoc = new Doctor(name, surname, birthDate, username, spec);
+
+		doctors.add(newDoc); 
+
+		return true; 
+	}
 	
     public Boolean scheduleAppointment(PatientUser patient, Doctor doctor, Date start , Date end, String reason)
     {
@@ -98,21 +115,42 @@ public class OfficeManager {
         return true;
     }
 	
+    // function to view the appointments for a doctor
+    // not for patients I think well need another one for that
     public void viewTodaysSchedule(Doctor doctor)
     {
 
         Date date = new Date(); 
-
-        for (Appointment appointment : appointments)
+        int count = 0;
+        for (Appointment appointment : this.getAppointments()) // loop through all the appointments
         {
             if (appointment.isSameDay(date))
             {
             	if (appointment.getDoctor().equals(doctor)) {
-            	}
-                System.out.println(appointment);
+            		System.out.println(appointment.toString());
+            		count++;
+            	}  
             }
         }
+        if(count == 0) { // if there are no appointments today print
+        	System.out.println("No appointments found for today");
+        }
     }
+    
+    // this function just prints all the appointments for a given user, patient or doctor
+    public void viewUserAppointments(User user) {
+    	int count = 0;
+    	for (Appointment app : this.getAppointments()) {
+    		if(app.getDoctor().equals(user) || app.getPatient().equals(user)) {
+    			System.out.println(app.toString());
+    			count++;
+    		}
+    	}
+    	if(count == 0) {
+    		System.out.println("No appointments found");
+    	}
+    }
+    
     
     public boolean addDoctor(Doctor doctor)
     {
@@ -214,7 +252,7 @@ public class OfficeManager {
 
 	}
     
-	//Returns the next podiatrist listed in the arraylist, then starts over from the beginning when it reaches the end
+	//Returns the next podiatrist listed in the arrayList, then starts over from the beginning when it reaches the end
     public Doctor returnPodiatrist() {
 		try {
 			
@@ -395,9 +433,39 @@ public class OfficeManager {
 		// in case of failure
         return false;
     }
+	
+	// function to assign a prescription to a patients medlist
+	public boolean assignPatientMedication(String patientUserName, Prescription p) {
+		PatientUser patient = (PatientUser) this.getUserByUserName(patientUserName); 
+		if(patient == null) {
+			System.out.println("Patient not found!");
+			return false;
+		}
+		else {
+			patient.getMedList().add(p);
+			return true;
+		}
+	}
+	
+	//function to remove a prescription from a patients medlist
+	public boolean removePatientMedication(String patientUserName, Prescription p) {
+		PatientUser patient = (PatientUser) this.getUserByUserName(patientUserName); 
+		if(patient == null) {
+			System.out.println("Patient not found!");
+			return false;
+		}
+		else {
+			for(Prescription P : patient.getMedList()) {
+				if(P.equals(p)) {
+					patient.getMedList().remove(P);
+					return true;
+				}
+			}
+		}
+		System.out.println("Prescription not found!");
+		return false;
+	}
 
-<<<<<<< Updated upstream
-=======
 	
 	// this function removes the appointment from the manager's appointment list. It returns false if the
 	// appointment is still in the list, and true if it has been successfully removed.
@@ -419,7 +487,9 @@ public class OfficeManager {
 	public boolean rescheduleAppt(Appointment appt, Date newStart, Date newEnd) {
 
 		boolean test = deleteAppt(appt); //deleting the appt
+
 		Appointment newAppt = new Appointment(appt.getPatient(), appt.getDoctor(), appt.getReason(), appt.getConclusion(), newStart, newEnd);
+
 		appointments.add(newAppt);//rescheduling
 		
 		boolean fixTest = false;
@@ -431,7 +501,6 @@ public class OfficeManager {
 		boolean compTest = test && fixTest;
 		return compTest; //checking that the initial appt was deleted and newAppt was implemented
 	}
->>>>>>> Stashed changes
 
 	public ArrayList<Appointment> getAppointments() {
 		return appointments;

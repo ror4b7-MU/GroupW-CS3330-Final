@@ -16,6 +16,9 @@ public class Appointment
     private String conclusion; 
     public Date start; 
     public Date end; 
+    private int AppointmentId;
+    private static int idCounter = 1;
+    
 
 
     @Override
@@ -53,7 +56,8 @@ public class Appointment
         this.conclusion = conclusion; 
         this.start = start; 
         this.end = end;
-
+        this.setAppointmentId(idCounter);
+        idCounter++;
     }
 
     public boolean isSameDay(Date date) {
@@ -138,5 +142,13 @@ public class Appointment
     public void setEnd(Date end) {
         this.end = end;
     }
+
+	public int getAppointmentId() {
+		return AppointmentId;
+	}
+
+	public void setAppointmentId(int appointmentId) {
+		AppointmentId = appointmentId;
+	}
     
 }
