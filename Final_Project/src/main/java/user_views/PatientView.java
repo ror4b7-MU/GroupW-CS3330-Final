@@ -87,12 +87,13 @@ public class PatientView extends UserView {
 		OfficeManager instance = this.getOfficeManager();
 		int apptNo = 0;
 		for(Appointment appt : instance.getAppointments()) {
-			if(appt.getPatient().equals(user)) {
+			if(appt.getPatient()==(PatientUser)user) {
 				apptNo+=1;
-				System.out.println("\nAppointment " + apptNo + ":");
-				appt.toString();
 			}
 		}
+		System.out.println("\nYou have " + apptNo + " appointment(s).\n");
+		instance.viewUserAppointments(user);
+
 		if(apptNo==0) {
 			System.out.println("\nSorry, but we have no appointments on file for you at this time.");
 		}
