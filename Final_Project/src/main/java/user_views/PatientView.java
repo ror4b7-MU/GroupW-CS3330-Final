@@ -92,7 +92,7 @@ public class PatientView extends UserView {
 			}
 		}
 		System.out.println("\nYou have " + apptNo + " appointment(s).\n");
-		instance.viewUserAppointments(user);
+		instance.viewPatientAppointments((PatientUser)user);
 
 		if(apptNo==0) {
 			System.out.println("\nSorry, but we have no appointments on file for you at this time.");
@@ -103,7 +103,7 @@ public class PatientView extends UserView {
 
 	@Override
 	protected boolean bookAppointment() {
-		PatientUser pat = (PatientUser) getUser(); 
+		PatientUser pat = (PatientUser) this.getUser(); 
 		Calendar start = UserInput.getValidDate("Enter Start: YYYYY-MM-DD-HH-mm of requested appointment"); 
 		Calendar end  = UserInput.getValidDate("Enter End: YYYY-MM-DD-HH-mm of requested appointment");
 		Doctor doc = (Doctor) UserInput.getValidUser("Please enter your doctor", getOfficeManager()); 

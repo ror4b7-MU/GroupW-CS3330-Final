@@ -118,7 +118,8 @@ public class OfficeManager {
 	
     public Boolean scheduleAppointment(PatientUser patient, Doctor doctor, Date start , Date end, String reason)
     {
-    	Appointment appointment = new Appointment(patient, doctor, reason, null, start, end); 
+    	Appointment appointment = new Appointment(patient, doctor, reason, null, start, end);
+    	System.out.println(patient.toString());
     	for(Appointment app : this.getAppointments()) {
     		if(app.getDoctor().equals(doctor) && app.checkOverLap(start, end)) {
     			System.out.println("Error overlapping appointment dates");
@@ -152,16 +153,31 @@ public class OfficeManager {
     }
     
     // this function just prints all the appointments for a given user, patient or doctor
-    public void viewUserAppointments(User user) {
-    	int count = 0;
-    	for (Appointment app : this.getAppointments()) {
-    		if(app.getDoctor().equals(user) || app.getPatient().equals(user)) {
-    			System.out.println(app.toString());
-    			count++;
-    		}
+    public void viewPatientAppointments(PatientUser user) {
+    	if(user != null) {
+	    	for (Appointment app : this.getAppointments()) {
+	    		if(app.getPatient()==user) {
+	    			System.out.println(app.toString());
+	    			//count++;
+	    		}
+	    	}
     	}
-    	if(count == 0) {
-    		System.out.println("No appointments found");
+    	else {
+    		System.out.println("Invalid User");
+    	}
+    }
+    
+    public void viewDoctorAppointments(Doctor user) {
+    	if(user != null) {
+	    	for (Appointment app : this.getAppointments()) {
+	    		if(app.getDoctor() == user) {
+	    			System.out.println(app.toString());
+	    			//count++;
+	    		}
+	    	}
+    	}
+    	else {
+    		System.out.println("Invalid User");
     	}
     }
     

@@ -146,10 +146,21 @@ public class DoctorView extends UserView{
 	// this function first displays the users appointments for today and then the rest of there upcoming appointments
 	@Override
 	protected void viewSchedule() {
-		System.out.println("Todays Appointments");
-		this.getOfficeManager().viewTodaysSchedule((Doctor) this.getUser()); // display todays appointments
-		System.out.println("All upcoming Appointments");
-		this.getOfficeManager().viewUserAppointments(this.getUser()); // display all appointments
+		OfficeManager instance = this.getOfficeManager();
+		int apptNo = 0;
+//		for(Appointment appt : instance.getAppointments()) {
+//			if(appt.getDoctor()==(Doctor)user) {
+//				apptNo+=1;
+//			}
+//		}
+		System.out.println("\nYou have " + apptNo + " appointment(s).\n");
+		instance.viewDoctorAppointments((Doctor)user);
+
+		if(apptNo==0) {
+			System.out.println("\nSorry, but we have no appointments on file for you at this time.");
+		}
+
+		
 	}
 
 	@Override

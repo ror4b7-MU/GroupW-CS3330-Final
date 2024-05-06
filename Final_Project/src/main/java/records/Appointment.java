@@ -34,25 +34,27 @@ public class Appointment
         int endHour = cal.get(Calendar.HOUR_OF_DAY);
         int endMinute = cal.get(Calendar.MINUTE);
         
-        System.out.println(("Appointment" +
-                "\n DATE=" + 
-                day + 
-                "\n START TIME" + 
-                startHour + startMinute +
-                "\n END TIME" 
-                + 
-                endHour + endMinute +
-                "\n ApptID "
-                + this.AppointmentId + "\n"));
+//        System.out.println(("Appointment" +
+//                "\n DATE=" + 
+//                day + 
+//                "\n START TIME" + 
+//                startHour + startMinute +
+//                "\n END TIME" 
+//                + 
+//                endHour + endMinute +
+//                "\n ApptID "
+//                + this.AppointmentId + "\n"));
         
-        return ("Appointment" +
+        return ("Appointment\n" +
+        		"Patient: "+ patient.toString() + 
+        		"Doctor: Dr. " + doctor.getSurname() +
                 "\n DATE=" + 
                 day + 
                 "\n START TIME: " + 
-                startHour + startMinute +
+                startHour + ":" + startMinute +
                 "\n END TIME: " 
                 + 
-                endHour + endMinute +
+                endHour + ":" + endMinute +
                 "\n ApptID "
                 + this.AppointmentId);
 
