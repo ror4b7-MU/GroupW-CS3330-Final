@@ -141,10 +141,11 @@ public abstract class UserView {
 				return false;
 			}
 			if(this.getOfficeManager().deleteAppt(appt)) {
+				System.out.println("\nAppointment cancelled!\n");
 				return true;
 			}
 			else {
-				System.out.println("Error canceling appointment");
+				System.out.println("Error cancelling appointment");
 				return false;
 			}
 		}
@@ -157,6 +158,7 @@ public abstract class UserView {
 				return false;
 			}
 			if(this.getOfficeManager().rescheduleAppt(appt, calStart.getTime(), calEnd.getTime())) {
+				System.out.println("\nAppointment " + apptNum + " successfully rescheduled!\n");
 				return true;
 			}
 			else {

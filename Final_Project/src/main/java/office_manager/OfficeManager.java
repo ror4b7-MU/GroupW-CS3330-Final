@@ -20,15 +20,15 @@ public class OfficeManager {
     private ArrayList<Doctor> doctors;
 
 	// dummy doctors
-	private Doctor d1 = new Doctor("Kathy", "Kurz", "01-01-1991", "kat", Specialization.GENERAL_CARE_PRACTITIONER);
-	private Doctor d2 = new Doctor("Derek", "Han", "12-13-1998", "dhan98", Specialization.ONCOLOGIST);
-	private Doctor d3 = new Doctor("Reese", "Darcy", "06-17-2000", "r33sesUser", Specialization.CARDIOLOGIST);
-	private Doctor d4 = new Doctor("Skylar", "Crowe", "08-23-1997", "cr0wl4rk", Specialization.PODIATRIST);
+	private Doctor d1 = new Doctor("Kathy", "Kurz", "01-01-1991", "d1", Specialization.GENERAL_CARE_PRACTITIONER);
+	private Doctor d2 = new Doctor("Derek", "Han", "12-13-1998", "d2", Specialization.ONCOLOGIST);
+	private Doctor d3 = new Doctor("Reese", "Darcy", "06-17-2000", "d3", Specialization.CARDIOLOGIST);
+	private Doctor d4 = new Doctor("Skylar", "Crowe", "08-23-1997", "d4", Specialization.PODIATRIST);
 	// dummy patients
-	private PatientUser p1 = new PatientUser("Casey", "Jones", "07-14-2003", "hockeyboy", d1);
-	private PatientUser p2 = new PatientUser("April", "O'Neil", "12-01-2003", "40n3il");
-	private PatientUser p3 = new PatientUser("Sharpay", "Evans", "03-28-2002", "pink4lyfe", d1);
-	private PatientUser p4 = new PatientUser("Troy", "Bolton", "02-14-2002", "betonit");
+	private PatientUser p1 = new PatientUser("Casey", "Jones", "07-14-2003", "p1", d1);
+	private PatientUser p2 = new PatientUser("April", "O'Neil", "12-01-2003", "p2");
+	private PatientUser p3 = new PatientUser("Sharpay", "Evans", "03-28-2002", "p3", d1);
+	private PatientUser p4 = new PatientUser("Troy", "Bolton", "02-14-2002", "p4");
     
     //To track last index of each type of doctor returned via returnSpecializedDoctor
     private int lastGCPIndex;
