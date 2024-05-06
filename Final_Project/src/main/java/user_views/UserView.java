@@ -133,9 +133,9 @@ public abstract class UserView {
     protected abstract boolean bookAppointment();
     
 	protected boolean cancelOrReschedulApp() {
-		String CorR = UserInput.getString("Enter C to cancel an appointment and R to reschedule: ");
+		String CorR = UserInput.getString("Enter C to cancel an appointment and R to reschedule");
 		if(CorR.equals("C")) {
-			int apptNum = UserInput.getValidInt("Enter the appointment number: ");
+			int apptNum = UserInput.getValidInt("Enter the appointment number");
 			Appointment appt = this.getOfficeManager().getApptByID(apptNum);
 			if(appt == null) {
 				return false;
@@ -150,9 +150,9 @@ public abstract class UserView {
 			}
 		}
 		else if (CorR.equals("R")) {
-			int apptNum = UserInput.getValidInt("Enter the appointment number: ");
-			Calendar calStart = UserInput.getValidDate("Enter the start time (YYYY-MM-DD-HH-mm): ");
-			Calendar calEnd = UserInput.getValidDate("Enter the end time (YYYY-MM-DD-HH-mm): ");
+			int apptNum = UserInput.getValidInt("Enter the appointment number");
+			Calendar calStart = UserInput.getValidDate("Enter the start time (YYYY-MM-DD-HH-mm)");
+			Calendar calEnd = UserInput.getValidDate("Enter the end time (YYYY-MM-DD-HH-mm)");
 			Appointment appt = this.getOfficeManager().getApptByID(apptNum);
 			if(appt == null) {
 				return false;
