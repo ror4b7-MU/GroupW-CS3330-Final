@@ -75,8 +75,10 @@ public class PatientView extends UserView {
 		    	break;
 		    case 4:
 		    	this.alterDoctor();
+		    	break;
 			case 5:
 				this.logout();
+				break;
 		    default:
 		    	return false;
 			}
