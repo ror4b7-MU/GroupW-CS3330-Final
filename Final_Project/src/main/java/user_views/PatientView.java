@@ -47,9 +47,9 @@ public class PatientView extends UserView {
 		@Override
 		protected void displayOptions() {
 			System.out.println("Welcome! What would you like to do today?");
-			System.out.println("Enter 1 to view your upcoming schedule");
-			System.out.println("Enter 2 to book a new appointement");
-			System.out.println("Enter 3 to cancel or reschedule an existing appointment");
+			System.out.println("Enter 1 to book a new appointment");
+			System.out.println("Enter 2 to cancel an existing appointment");
+			System.out.println("Enter 3 to reschedule an existing appointment");
 			System.out.println("Enter 4 to logout");
 		}
 
